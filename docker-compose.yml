@@ -1,0 +1,16 @@
+version: '2'
+services:
+  xonotic_stable:
+    build:
+      context: build
+      dockerfile: containers/xonotic_stable.Dockerfile
+    command: ./server_linux.sh -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    ports:
+      - "26010:26010"
+  xonotic_git:
+    build:
+      context: build
+      dockerfile: containers/xonotic_git.Dockerfile
+    command: ./all run dedicated -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    ports:
+      - "26010:26010"
