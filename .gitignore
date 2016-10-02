@@ -1,3 +1,7 @@
 *.idea
 *.swo
 *.swp
+venv
+activate
+xsms.egg-info
+__pycache__/
