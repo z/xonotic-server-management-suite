@@ -11,8 +11,11 @@ services:
     build:
       context: build
       dockerfile: containers/xonotic_git.Dockerfile
-    command: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    # Run a single server
     #command: ./all run dedicated +serverconfig server.cfg
+    command: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    # Run many servers (in progress)
+    #command: xsms servers start --all
     ports:
       - "26000-26010:26000-26010/udp"
     volumes:

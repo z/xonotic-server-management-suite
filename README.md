@@ -31,7 +31,32 @@ docker-compose up    # this brings up the arch described in docker-compose.yml
 docker-compose down  # this takes it down
 ```
 
-###  Using XMM to manage maps
+### Defining Servers
+
+*IN PROGRESS*
+
+XSMS provides a YAML specification for defining the basic meta information for servers.
+
+**Example:**
+
+```
+version: '1'
+servers:
+  insta:
+    title: "(SMB) Instagib+Hook USA"
+    motd: |
+      This is my long message of the day.
+    port: 26010
+    exec: ./all run dedicated -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+  overkill:
+    title: "(SMB) Overkill USA"
+    motd: |
+      This is my other long message of the day.
+    port: 26004
+    exec: ./all run dedicated -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
+```
+
+### Using XMM to manage maps
 
 The link between XMM and servers is defined in `build/containers/xonotic/xmm/servers.json`.
 
