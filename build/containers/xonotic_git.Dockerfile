@@ -50,6 +50,15 @@ RUN git clone https://github.com/z/xonotic-map-manager /opt/xmm && \
 COPY containers/xonotic/xmm.cfg /root/.xmm.cfg
 COPY containers/xonotic/xmm/servers.json /root/.xmm/servers.json
 
+# Xonotic Server Management Suite
+RUN git clone https://github.com/z/xonotic-server-management-suite /opt/xsms && \
+    cd /opt/xsms/ && \
+    python3 setup.py install
+
+# These can be built into the image for deployment (put in build/ dir)
+# COPY xsms.cfg /root/.xsms.cfg
+# COPY servers.yml /root/.xsms/servers.yml
+
 
 VOLUME ["~/.xonotic/data"]
 

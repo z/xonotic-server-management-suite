@@ -4,10 +4,10 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
 
 Current Features:
 
-- Dockerized [Xonotic](http://xonotic.org) git and stable builds 
-- [SMB configurations](https://github.com/MarioSMB/smb-servers) integrated
-- [SMB Modpack](https://github.com/MarioSMB/modpack) support
-- [Xonotic Map Manager](https://github.com/z/xonotic-map-manager) integration
+* Dockerized [Xonotic](http://xonotic.org) git and stable builds 
+* [SMB configurations](https://github.com/MarioSMB/smb-servers) integrated
+* [SMB Modpack](https://github.com/MarioSMB/modpack) support
+* [Xonotic Map Manager](https://github.com/z/xonotic-map-manager) integration
 
 ## Requirements
 
@@ -24,11 +24,18 @@ xsms smbmod init         # setup SMB modpack and assets
 All custom server assets go in `~/.xonotic-smb` on the host which gets mounted
 to `~/.xonotic` in the containers.
 
-## Usage
+## XSMS Configuration
+
+The defaults should work out of the box, if you want to make changes, edit the `~/.xsms.cfg` file.
 
 ```
-docker-compose up    # this brings up the arch described in docker-compose.yml
-docker-compose down  # this takes it down
+[default]
+smb_init_script = bin/init.sh
+smb_update_script = ~/.xonotic-smb/modpack/update.sh
+smb_build_script = ~/.xonotic-smb/modpack/build.sh
+smb_cache_path = ~/.xonotic-smb/modpack/.cache
+data_csprogs = ~/.xonotic-smb/data_csprogs
+servers = ~/.xsms/servers.yml
 ```
 
 ### Defining Servers
@@ -54,6 +61,13 @@ servers:
       This is my other long message of the day.
     port: 26004
     exec: ./all run dedicated -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
+```
+
+## Usage
+
+```
+docker-compose up    # this brings up the arch described in docker-compose.yml
+docker-compose down  # this takes it down
 ```
 
 ### Using XMM to manage maps

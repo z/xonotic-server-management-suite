@@ -22,5 +22,5 @@ setup(
           'xsms = xsms.bin:main'
        ]
     },
-    install_requires=['']
+    install_requires=['pyyaml']
 )
