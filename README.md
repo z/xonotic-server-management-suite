@@ -16,8 +16,9 @@ Current Features:
 ## Install
 
 ```
-./setup.sh          # this clones the server configs and modpack
-docker-compose up   # this brings up the arch described in docker-compose.yml
+python setup.py install  # this clones the server configs and modpack
+xsms smbmod init         # setup SMB modpack and assets 
+docker-compose up        # this brings up the arch described in docker-compose.yml
 ```
 
 All custom server assets go in `~/.xonotic-smb` on the host which gets mounted
