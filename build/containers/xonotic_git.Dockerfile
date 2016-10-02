@@ -28,6 +28,7 @@ RUN \
 RUN git clone git://git.xonotic.org/xonotic/xonotic.git /opt/Xonotic && \
     cd /opt/Xonotic/ && \
     ./all update -l best && \
+    ./all compile && \
     ./all compile dedicated
 
 RUN mkdir -p ~/.xonotic/data && \

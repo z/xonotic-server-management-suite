@@ -4,13 +4,17 @@ services:
     build:
       context: build
       dockerfile: containers/xonotic_stable.Dockerfile
-    command: ./server_linux.sh -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    command: ./server_linux.sh -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-overkill.cfg
     ports:
-      - "26010:26010"
+      - "26011-26014:26011-26014/udp"
   xonotic_git:
     build:
       context: build
       dockerfile: containers/xonotic_git.Dockerfile
     command: ./all run dedicated -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    #command: ./all run dedicated +serverconfig server.cfg
     ports:
-      - "26010:26010"
+      - "26000-26010:26000-26010/udp"
+    volumes:
+      - ~/.xonotic-smb:/root/.xonotic
+      - ./build/xonotic/server.cfg:/root/.xonotic/server.cfg
