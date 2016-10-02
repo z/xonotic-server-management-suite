@@ -28,7 +28,7 @@ to `~/.xonotic` in the containers.
 
 The defaults should work out of the box, if you want to make changes, edit the `~/.xsms.cfg` file.
 
-```
+```ini
 [default]
 smb_init_script = bin/init.sh
 smb_update_script = ~/.xonotic-smb/modpack/update.sh
@@ -44,9 +44,11 @@ servers = ~/.xsms/servers.yml
 
 XSMS provides a YAML specification for defining the basic meta information for servers.
 
+You can think of this as "xonotic-compose".
+
 **Example:**
 
-```
+```yaml
 version: '1'
 servers:
   insta:
