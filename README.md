@@ -103,4 +103,4 @@ xmm -s insta list                          # list all maps tracked for this serv
 
 ### Without Docker
 
-Without docker, use `xsms servers run` to start up your servers defined in `~/.xsms/~servers.yml`. XMM Can be installed separately.
+Without docker, use `xsms servers run` to start up your servers defined in `~/.xsms/servers.yml`. XMM Can be installed separately.
