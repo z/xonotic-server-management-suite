@@ -1,4 +1,4 @@
-# xonotic-server-manager
+# xonotic-server-management-suite
 
 For managing infrastructure, tests, deployments of Xonotic game servers.
 
