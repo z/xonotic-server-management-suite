@@ -37,7 +37,9 @@ def main():
                 data = yaml.load(f)
                 for server in data['servers']:
                     run_cmd = shlex.split(data['servers'][server]['exec'])
-                    subprocess.call(run_cmd)
+                    DETACHED_PROCESS = 0x00000008
+                    pid = subprocess.Popen([run_cmd], creationflags=DETACHED_PROCESS).pid
+                    print(pid)
 
 
 def parse_args():
