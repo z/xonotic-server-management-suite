@@ -28,18 +28,41 @@ def main():
                 subprocess.call([conf['smb_update_script']])
                 subprocess.call([conf['smb_build_script']])
 
-            subprocess.call(['rsync', '-azvh', conf['smb_cache_path'], conf['data_csprogs']])
+            subprocess.call(['rsync', '-azvh', conf['smb_cache_path'] + '/', conf['data_csprogs']])
 
     if args.command == 'servers':
 
-        if args.subcommand == 'run':
+        if args.subcommand == 'start':
             with open(conf['servers_manifest']) as f:
-                data = yaml.load(f)
-                for server in data['servers']:
-                    run_cmd = shlex.split(data['servers'][server]['exec'])
-                    DETACHED_PROCESS = 0x00000008
-                    pid = subprocess.Popen([run_cmd], creationflags=DETACHED_PROCESS).pid
-                    print(pid)
+                servers = yaml.load(f)
+                for server in servers['servers']:
+                    # using screen
+                    run_cmd = shlex.split('screen -dmS {0} {1}'.format(server, servers['servers'][server]['exec']))
+                    subprocess.call(run_cmd, shell=True)
+
+                    # TODO: using supervisor
+
+        # supervisor conf needs to be generated if using supervisor
+        if args.subcommand == 'build':
+
+            with open(conf['supervisor_server_template']) as f:
+                template = f.read()
+                template = '{0}\n\n'.format(template)
+
+            with open(conf['servers_manifest']) as f:
+                servers = yaml.load(f)
+
+            supervisor_data = ''
+
+            for server in servers['servers']:
+                supervisor_data += template.format(
+                        gs_name=server,
+                        gs_command=servers['servers'][server]['exec'],
+                        xonotic_root=conf['xonotic_root'],
+                    )
+
+            with open(conf['supervisor_conf'], 'w') as f:
+                f.write(supervisor_data)
 
 
 def parse_args():
@@ -54,7 +77,7 @@ def parse_args():
     parser_smbmod.add_argument('--all', '-A', help='Sync smb mod and build as well?', action='store_true')
 
     parser_servers = subparsers.add_parser('servers', help='take actions related to the servers')
-    parser_servers.add_argument('subcommand', choices=['run'], type=str)
+    parser_servers.add_argument('subcommand', choices=['start', 'build'], type=str)
 
     return parser.parse_args()
 

@@ -20,6 +20,8 @@ RUN \
    libxext-dev \
    libjpeg-turbo8-dev \
    zlib1g-dev \
+   supervisor \
+   screen \
    python3 \
    python3-pip \
    zip \
@@ -27,6 +29,8 @@ RUN \
    curl \
    wget \
    git
+
+# COPY containers/xonotic/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Xonotic
 RUN git clone git://git.xonotic.org/xonotic/xonotic.git /opt/Xonotic && \

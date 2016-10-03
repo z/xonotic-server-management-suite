@@ -40,12 +40,15 @@ The defaults should work out of the box, if you want to make changes, edit the `
 
 ```ini
 [default]
+xonotic_root = /opt/Xonotic
 smb_init_script = bin/init.sh
 smb_update_script = ~/.xonotic-smb/modpack/update.sh
 smb_build_script = ~/.xonotic-smb/modpack/build.sh
 smb_cache_path = ~/.xonotic-smb/modpack/.cache
 data_csprogs = ~/.xonotic-smb/data_csprogs
 servers = ~/.xsms/servers.yml
+supervisor_server_template = ~/.xsms/server.conf.template
+supervisor_conf = ~/.xsms/supervisor.conf
 ```
 
 ### Defining Servers

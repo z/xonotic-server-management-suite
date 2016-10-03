@@ -22,4 +22,4 @@ services:
       - ~/.xonotic-smb:/root/.xonotic
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
-      - ./xsms/bin.py:/opt/xsms/xsms/bin.py
+      - ./xsms/bin.py:/opt/xsms/build/lib/xsms/bin.py
