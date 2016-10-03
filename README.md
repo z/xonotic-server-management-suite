@@ -68,6 +68,7 @@ servers:
     title: "(SMB) Instagib+Hook USA"
     motd: |
       This is my long message of the day.
+      It can be multiple lines.
     port: 26010
     exec: ./all run dedicated -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
   overkill:
@@ -106,4 +107,6 @@ xmm -s insta list                          # list all maps tracked for this serv
 
 ### Without Docker
 
-Without docker, use `xsms servers run` to start up your servers defined in `~/.xsms/servers.yml`. XMM Can be installed separately.
+Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and  `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
+
+For daemons, conf files need to be generated with `xsms servers build`.

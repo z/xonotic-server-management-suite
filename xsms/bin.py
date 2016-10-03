@@ -59,7 +59,8 @@ def main():
             with open(conf['servers_manifest']) as f:
                 servers = yaml.load(f)
 
-            supervisor_data = ''
+            supervisor_data = '[supervisord]\n' \
+                              'nodaemon=true\n'
 
             for server in servers['servers']:
                 supervisor_data += template.format(
