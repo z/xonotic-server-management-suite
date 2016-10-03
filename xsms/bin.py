@@ -4,6 +4,7 @@ import argparse
 import subprocess
 import shlex
 import yaml
+import screenutils
 from xsms.config import conf
 
 
@@ -33,14 +34,20 @@ def main():
     if args.command == 'servers':
 
         if args.subcommand == 'start':
+
+            screen_sessions = {}
+
             with open(conf['servers_manifest']) as f:
                 servers = yaml.load(f)
-                for server in servers['servers']:
-                    # using screen
-                    run_cmd = shlex.split('screen -dmS {0} {1}'.format(server, servers['servers'][server]['exec']))
-                    subprocess.call(run_cmd, shell=True)
 
-                    # TODO: using supervisor
+            for server in servers['servers']:
+                # using screen
+                screen_sessions[server] = screenutils.Screen(server, True)
+                screen_sessions[server].send_commands(servers['servers'][server]['exec'])
+
+            screenutils.list_screens()
+
+            # TODO: using supervisor
 
         # supervisor conf needs to be generated if using supervisor
         if args.subcommand == 'build':

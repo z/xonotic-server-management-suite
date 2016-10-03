@@ -22,5 +22,5 @@ setup(
           'xsms = xsms.bin:main'
        ]
     },
-    install_requires=['pyyaml']
+    install_requires=['pyyaml', 'screenutils']
 )

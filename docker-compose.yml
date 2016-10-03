@@ -15,11 +15,11 @@ services:
     #command: ./all run dedicated +serverconfig server.cfg
     #command: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
     # Run many servers (in progress)
-    command: xsms servers run
+    command: xsms servers start
     ports:
       - "26000-26010:26000-26010/udp"
     volumes:
       - ~/.xonotic-smb:/root/.xonotic
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
-      - ./xsms/bin.py:/opt/xsms/build/lib/xsms/bin.py
+      - ~/.xsms/server.conf.template:/root/.xsms/server.conf.template
