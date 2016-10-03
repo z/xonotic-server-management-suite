@@ -17,12 +17,17 @@ services:
     # Run many servers (in progress)
     # command: xsms servers start
     # Run under supervisor
-    command: /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+    #command: /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+    command: /usr/local/bin/circusd /root/.xsms/circus.ini
     ports:
       - "26000-26010:26000-26010/udp"
+      - "8080:8080"
+      - "8082:8082"
     volumes:
       - ~/.xonotic-smb:/root/.xonotic
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
-      - ~/.xsms/server.conf.template:/root/.xsms/server.conf.template
+      - ~/.xsms/supervisor.server.conf.tpl:/root/.xsms/supervisor.server.conf.tpl
+      - ~/.xsms/circus.server.conf.tpl:/root/.xsms/circus.server.conf.tpl
       - ~/.xsms/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      - ~/.xsms/circus.ini:/root/.xsms/circus.ini

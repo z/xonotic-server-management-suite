@@ -52,18 +52,19 @@ def main():
         # supervisor conf needs to be generated if using supervisor
         if args.subcommand == 'build':
 
-            with open(conf['supervisor_server_template']) as f:
-                template = f.read()
-                template = '{0}\n\n'.format(template)
-
             with open(conf['servers_manifest']) as f:
                 servers = yaml.load(f)
+
+            # Using supervisor
+            with open(conf['supervisor_server_template']) as f:
+                supervisor_template = f.read()
+                supervisor_template = '{0}\n\n'.format(supervisor_template)
 
             supervisor_data = '[supervisord]\n' \
                               'nodaemon=true\n'
 
             for server in servers['servers']:
-                supervisor_data += template.format(
+                supervisor_data += supervisor_template.format(
                         gs_name=server,
                         gs_command=servers['servers'][server]['exec'],
                         xonotic_root=conf['xonotic_root'],
@@ -71,6 +72,27 @@ def main():
 
             with open(conf['supervisor_conf'], 'w') as f:
                 f.write(supervisor_data)
+
+            # Using Circus
+            with open(conf['circus_server_template']) as f:
+                circus_template = f.read()
+                circus_template = '{0}\n\n'.format(circus_template)
+
+            circus_data = '[circus]\n' \
+                          'httpd = 1\n' \
+                          'httpd_host = localhost\n' \
+                          'httpd_port = 8082\n' \
+                          'statsd = 1\n'
+
+            for server in servers['servers']:
+                circus_data += circus_template.format(
+                    gs_name=server,
+                    gs_command=servers['servers'][server]['exec'],
+                    xonotic_root=conf['xonotic_root'],
+                )
+
+            with open(conf['circus_conf'], 'w') as f:
+                f.write(circus_data)
 
 
 def parse_args():

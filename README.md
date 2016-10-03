@@ -47,8 +47,11 @@ smb_build_script = ~/.xonotic-smb/modpack/build.sh
 smb_cache_path = ~/.xonotic-smb/modpack/.cache
 data_csprogs = ~/.xonotic-smb/data_csprogs
 servers = ~/.xsms/servers.yml
-supervisor_server_template = ~/.xsms/server.conf.template
+# Engines
+supervisor_server_template = ~/.xsms/supervisor.server.conf.tpl
 supervisor_conf = ~/.xsms/supervisor.conf
+circus_server_template = ~/.xsms/circus.server.conf.tpl
+circus_conf = ~/.xsms/circus.ini
 ```
 
 ### Defining Servers

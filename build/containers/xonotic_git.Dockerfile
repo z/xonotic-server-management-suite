@@ -63,6 +63,11 @@ RUN git clone https://github.com/z/xonotic-server-management-suite /opt/xsms && 
 # COPY xsms.cfg /root/.xsms.cfg
 # COPY servers.yml /root/.xsms/servers.yml
 
+# Circus attempts
+RUN pip3 install circus
+RUN pip3 install circus-web
+RUN pip3 install chaussette
+RUN pip3 install git+git://github.com/tomassedovic/tornadio2.git@python3#tornadIO2-0.0.3 --upgrade
 
 VOLUME ["~/.xonotic/data"]
 

@@ -19,7 +19,10 @@ conf = {
     'servers_manifest': os.path.expanduser(config['servers']),
     'supervisor_server_template': os.path.expanduser(config['supervisor_server_template']),
     'supervisor_conf': os.path.expanduser(config['supervisor_conf']),
+    'circus_server_template': os.path.expanduser(config['circus_server_template']),
+    'circus_conf': os.path.expanduser(config['circus_conf']),
 }
 
 util.check_if_not_create(conf['servers_manifest'], 'config/servers.yml')
-util.check_if_not_create(conf['supervisor_server_template'], 'config/server.conf.template')
+util.check_if_not_create(conf['supervisor_server_template'], 'config/supervisor.server.conf.tpl')
+util.check_if_not_create(conf['circus_server_template'], 'config/circus.server.conf.tpl')
