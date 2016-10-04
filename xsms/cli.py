@@ -5,10 +5,12 @@ import subprocess
 import shlex
 import yaml
 import screenutils
-from xsms.config import conf
+from .config import conf
+from .__about__ import __version__
 
 
 def main():
+
     args = parse_args()
 
     if args.command == 'smbmod':
@@ -76,6 +78,9 @@ def main():
 def parse_args():
 
     parser = argparse.ArgumentParser(description='Xonotic Server Management Suite is a tool to help manage Xonotic servers.')
+
+    parser.add_argument('--version', action='version',
+                        version='%(prog)s {version}'.format(version=__version__))
 
     subparsers = parser.add_subparsers(dest='command')
     subparsers.required = True

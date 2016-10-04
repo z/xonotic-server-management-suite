@@ -4,4 +4,6 @@
 venv
 activate
 xsms.egg-info
+build/lib/
+dist/
 __pycache__/

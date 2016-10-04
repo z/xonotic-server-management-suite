@@ -19,7 +19,7 @@ setup(
     packages=find_packages(exclude=('tests', 'docs')),
     entry_points={
        'console_scripts': [
-          'xsms = xsms.bin:main'
+          'xsms = xsms.cli:main'
        ]
     },
     install_requires=['pyyaml', 'screenutils']
