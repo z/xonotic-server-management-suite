@@ -1,4 +1,4 @@
-__all__ = (
+__all__ = [
     '__title__',
     '__package_name__',
     '__version__',
@@ -10,11 +10,11 @@ __all__ = (
     '__license__',
     '__url__',
     '__copyright__',
-)
+]
 
 __title__ = 'Xonotic Server Management Suite'
 __package_name__ = 'xsms'
-__version__ = '0.2.1a'
+__version__ = '0.2.0a'
 __summary__ = 'Integrated tools for managing Xonotic servers.'
 __keywords__ = ['xonotic', 'xonotic-server', 'cli']
 __author__ = 'Tyler Mulligan'

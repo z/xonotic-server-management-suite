@@ -28,7 +28,7 @@ Use the Dockerfiles in `build/containers` for inspiration.
 
 ```
 python setup.py install  # this clones the server configs and modpack
-xsms smbmod init         # setup SMB modpack and assets
+xsms smbmod init         # setup SMB modpack and assets (optional)
 ```
 
 All custom server assets go in `~/.xonotic-smb` on the host which gets mounted
@@ -40,15 +40,20 @@ The defaults should work out of the box, if you want to make changes, edit the `
 
 ```ini
 [default]
+# Xonotic
 xonotic_root = /opt/Xonotic
-smb_init_script = bin/init.sh
+servers = ~/.xsms/servers.yml
+
+# Engines
+supervisor_server_template = ~/.xsms/supervisor.server.conf.tpl
+supervisor_conf = ~/.xsms/supervisor.conf
+
+# SMB
+smb_init_script = bin/smb_init.sh
 smb_update_script = ~/.xonotic-smb/modpack/update.sh
 smb_build_script = ~/.xonotic-smb/modpack/build.sh
 smb_cache_path = ~/.xonotic-smb/modpack/.cache
 data_csprogs = ~/.xonotic-smb/data_csprogs
-servers = ~/.xsms/servers.yml
-supervisor_server_template = ~/.xsms/supervisor.server.conf.tpl
-supervisor_conf = ~/.xsms/supervisor.conf
 ```
 
 ### Defining Servers
