@@ -2,7 +2,8 @@ __all__ = (
     '__title__',
     '__package_name__',
     '__version__',
-    '__description__',
+    '__summary__',
+    '__keywords__',
     '__author__',
     '__email__',
     '__author__',
@@ -13,8 +14,9 @@ __all__ = (
 
 __title__ = 'Xonotic Server Management Suite'
 __package_name__ = 'xsms'
-__version__ = '0.2.0a'
-__description__ = 'Integrated tools for managing Xonotic servers.'
+__version__ = '0.2.1a'
+__summary__ = 'Integrated tools for managing Xonotic servers.'
+__keywords__ = ['xonotic', 'xonotic-server', 'cli']
 __author__ = 'Tyler Mulligan'
 __email__ = 'z@xnz.me'
 __license__ = 'MIT'
