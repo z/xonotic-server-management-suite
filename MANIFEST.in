@@ -1,5 +1,5 @@
 include README.md
 include LICENSE
-include docs/*
-include config/*
-include bin/*
+recursive-include docs *
+recursive-include config *
+recursive-include bin *

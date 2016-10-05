@@ -2,11 +2,9 @@
 # PYTHON_ARGCOMPLETE_OK
 import argparse
 import subprocess
-import shlex
-import yaml
-import screenutils
 from .config import conf
 from .__about__ import __version__
+from .servers import ServersCommand
 
 
 def main():
@@ -35,44 +33,14 @@ def main():
 
     if args.command == 'servers':
 
+        servers = ServersCommand(conf=conf)
+
         if args.subcommand == 'start':
-
-            screen_sessions = {}
-
-            with open(conf['servers_manifest']) as f:
-                servers = yaml.load(f)
-
-            for server in servers['servers']:
-                # using screen
-                screen_sessions[server] = screenutils.Screen(server, True)
-                screen_sessions[server].send_commands(servers['servers'][server]['exec'])
-
-            screenutils.list_screens()
-
-            # TODO: using supervisor
+            servers.start()
 
         # supervisor conf needs to be generated if using supervisor
         if args.subcommand == 'build':
-
-            with open(conf['supervisor_server_template']) as f:
-                template = f.read()
-                template = '{0}\n\n'.format(template)
-
-            with open(conf['servers_manifest']) as f:
-                servers = yaml.load(f)
-
-            supervisor_data = '[supervisord]\n' \
-                              'nodaemon=true\n'
-
-            for server in servers['servers']:
-                supervisor_data += template.format(
-                        gs_name=server,
-                        gs_command=servers['servers'][server]['exec'],
-                        xonotic_root=conf['xonotic_root'],
-                    )
-
-            with open(conf['supervisor_conf'], 'w') as f:
-                f.write(supervisor_data)
+            servers.build()
 
 
 def parse_args():

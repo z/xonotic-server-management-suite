@@ -1,6 +1,7 @@
 *.idea
 *.swo
 *.swp
+*.pyc
 venv
 activate
 xsms.egg-info
