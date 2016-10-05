@@ -37,6 +37,7 @@ class ServersCommand:
         for server in servers['servers']:
             # using screen
             screen_sessions[server] = screenutils.Screen(server, True)
+            screen_sessions[server].send_commands('cd {0}'.format(self.conf['xonotic_root']))
             screen_sessions[server].send_commands(servers['servers'][server]['exec'])
 
         screenutils.list_screens()
