@@ -17,6 +17,8 @@ setup(
     url='https://github.com/z/xonotic-server-management',
     license=license,
     packages=find_packages(exclude=('tests', 'docs')),
+    package_data={'': ['LICENSE', 'README.md', 'docs/*', 'config/*', 'bin/*']},
+    include_package_data=True,
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     entry_points={
