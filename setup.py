@@ -17,6 +17,8 @@ setup(
     url='https://github.com/z/xonotic-server-management',
     license=license,
     packages=find_packages(exclude=('tests', 'docs')),
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest'],
     entry_points={
        'console_scripts': [
           'xsms = xsms.cli:main'

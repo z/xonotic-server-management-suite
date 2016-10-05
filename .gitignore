@@ -7,3 +7,5 @@ xsms.egg-info
 build/lib/
 dist/
 __pycache__/
+.cache/
+.eggs/
