@@ -9,6 +9,8 @@ Current Features:
 * [SMB Modpack](https://github.com/MarioSMB/modpack) support
 * [Xonotic Map Manager](https://github.com/z/xonotic-map-manager) integration
 
+[![Build Status](https://travis-ci.org/z/xonotic-server-management-suite.svg?branch=develop)](https://travis-ci.org/z/xonotic-server-management-suite)
+
 ## Requirements
 
 * Python 3
@@ -86,7 +88,7 @@ servers:
 
 ## Usage
 
-### With Docker
+#### With Docker
 
 The easiest way to get started is with docker. The `docker-compose.yml` file contains containers for running either xonotic_git, xonotic_stable or both. 
 
@@ -97,7 +99,7 @@ docker-compose up xonotic_git  # this brings up only the xonotic_git container
 docker-compose down            # this takes it down
 ```
 
-#### Using XMM to manage maps
+##### Using XMM to manage maps
 
 The link between XMM and servers is defined in `build/containers/xonotic/xmm/servers.json`.
 
@@ -110,7 +112,7 @@ xmm -s insta install eggandscrambled.pk3   # install a new map
 xmm -s insta list                          # list all maps tracked for this server
 ```
 
-### Without Docker
+#### Without Docker
 
 Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and  `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
 
