@@ -96,8 +96,6 @@ class ServersCommand:
                     net_address=servers['servers'][server]['net_address'],
                 )
 
-
-
             custom_server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_templates_servers_root'], server)
 
             if os.path.exists(custom_server_template):
