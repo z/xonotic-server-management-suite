@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 
 # System Dependencies
 RUN \
@@ -51,20 +51,20 @@ RUN git clone https://github.com/z/xonotic-map-manager /opt/xmm && \
     pip3 install --upgrade pip && \
     python3 setup.py install
 
-COPY containers/xonotic/xmm.cfg /root/.xmm.cfg
-COPY containers/xonotic/xmm/servers.json /root/.xmm/servers.json
+COPY containers/xonotic/xmm.cfg ~/.xmm.cfg
+COPY containers/xonotic/xmm/servers.json ~/.xmm/servers.json
 
 # Xonotic Server Management Suite
 RUN git clone https://github.com/z/xonotic-server-management-suite /opt/xsms && \
     cd /opt/xsms/ && \
     python3 setup.py install
 
-# These can be built into the image for deployment (put in build/ dir)
-# COPY xsms.cfg /root/.xsms.cfg
-# COPY servers.yml /root/.xsms/servers.yml
+# These can be built into the image for deployment (put in docker/ dir)
+# COPY xsms.cfg ~/.xsms.cfg
+# COPY servers.yml ~/.xsms/servers.yml
 
 
-VOLUME ["~/.xonotic/data"]
+VOLUME ~/.xonotic/data
 
 WORKDIR /opt/Xonotic
 

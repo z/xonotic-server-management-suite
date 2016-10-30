@@ -24,7 +24,7 @@ Current Features:
 
 Without Docker, you'll need to install Xonotic locally. Xonotic releases are available at [Xonotic.org](http://www.xonotic.org/download) and instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access).
 
-Use the Dockerfiles in `build/containers` for inspiration.
+Use the Dockerfiles in `docker/containers` for inspiration.
 
 ## Install
 

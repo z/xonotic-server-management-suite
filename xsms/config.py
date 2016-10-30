@@ -22,4 +22,4 @@ conf = {
 }
 
 util.check_if_not_create(conf['servers_manifest'], 'config/servers.yml')
-util.check_if_not_create(conf['supervisor_server_template'], 'config/server.conf.template')
+util.check_if_not_create(conf['supervisor_server_template'], 'config/supervisor.server.conf.tpl')
