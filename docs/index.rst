@@ -22,6 +22,7 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
     * `screen`_
     * `tmux`_
     * `supervisor`_
+    * `docker`_
 
 
 .. _Xonotic: http://xonotic.org
@@ -31,6 +32,7 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
 .. _screen: https://www.gnu.org/software/screen
 .. _tmux: https://tmux.github.io
 .. _supervisor: http://supervisord.org
+.. _docker: https://www.docker.com
 
 **Get Started**
 
@@ -40,8 +42,9 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
    intro
    configuration
    usage
-   tests
+   engines
    xsms
+   tests
    license
 
 

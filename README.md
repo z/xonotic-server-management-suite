@@ -16,6 +16,7 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
     * [screen](https://www.gnu.org/software/screen/)
     * [tmux](https://tmux.github.io/)
     * [supervisor](http://supervisord.org/)
+    * [docker](https://www.docker.com/)
 
 **Define Your servers**:
 
@@ -29,6 +30,7 @@ servers:
     port: 26000
     maxplayers: 16
     net_address: ""
+    use_smbmod: false
     exec: ./all run dedicated +serverconfig insta.cfg
 ```
 

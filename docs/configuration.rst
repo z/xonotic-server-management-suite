@@ -10,6 +10,7 @@ The defaults should work out of the box, if you want to make changes, edit the `
     xonotic_server_pk3dir = ~/.xonotic/servers.pk3dir
     servers = ~/.xsms/servers.yml
     xonotic_server_template = ~/.xsms/templates/xonotic.server.cfg.tpl
+    xonotic_smbmod_server_template = ~/.xsms/templates/xonotic.smbmod-server.cfg.tpl
 
     # Engines
     supervisor_server_template = ~/.xsms/templates/supervisor.server.conf.tpl
@@ -41,6 +42,7 @@ You can think of this as *xonotic-compose*.
         port: 26010
         maxplayers: 64
         net_address: ""
+        use_smbmod: true
         exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig insta.cfg
       overkill:
         title: "(SMB) Overkill USA"
@@ -50,12 +52,14 @@ You can think of this as *xonotic-compose*.
         port: 26004
         maxplayers: 32
         net_address: ""
+        use_smbmod: true
         exec: ./all run dedicated -game modpack -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
 
 
 This YAML file will generate a xonotic-compatible `.cfg` in `~/.xsms/generated/servers/`.
 
-#### Custom Server Configuration
+Custom Server Configuration
+---------------------------
 
 Custom server templates are defined in `~/.xsms/templates/servers/<servername>.cfg.tpl` where <servername> corresponds with the name of the server defined in the YAML. See the `tests` folder for an example.
 
