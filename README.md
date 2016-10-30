@@ -44,7 +44,8 @@ The defaults should work out of the box, if you want to make changes, edit the `
 [default]
 # Xonotic
 xonotic_root = /opt/Xonotic
-servers = ~/.xsms/servers.yml
+xonotic_servers = ~/.xsms/servers.yml
+xonotic_server_template = ~/.xsms/xonotic.server.cfg.tpl
 
 # Engines
 supervisor_server_template = ~/.xsms/supervisor.server.conf.tpl
@@ -115,6 +116,6 @@ xmm -s insta list                          # list all maps tracked for this serv
 
 #### Without Docker
 
-Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and  `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
+Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
 
 For daemons, conf files need to be generated with `xsms servers build`.
