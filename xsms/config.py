@@ -26,6 +26,7 @@ conf = {
     'data_csprogs': os.path.expanduser(config['data_csprogs']),
     'servers_manifest': os.path.expanduser(config['servers']),
     'xonotic_server_template': os.path.expanduser(config['xonotic_server_template']),
+    'supervisor_conf_template': os.path.expanduser(config['supervisor_conf_template']),
     'supervisor_server_template': os.path.expanduser(config['supervisor_server_template']),
     'supervisor_conf': os.path.expanduser(config['supervisor_conf']),
 }
@@ -33,6 +34,7 @@ conf = {
 # Add templates to ~/.xsms/templates/
 util.check_if_not_create(conf['servers_manifest'], 'config/servers.yml')
 util.check_if_not_create(conf['xonotic_server_template'], 'config/templates/xonotic.server.cfg.tpl')
+util.check_if_not_create(conf['supervisor_conf_template'], 'config/templates/supervisor.conf.tpl')
 util.check_if_not_create(conf['supervisor_server_template'], 'config/templates/supervisor.server.conf.tpl')
 
 # Make sure needed dirs exist
