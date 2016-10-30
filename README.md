@@ -44,12 +44,12 @@ The defaults should work out of the box, if you want to make changes, edit the `
 [default]
 # Xonotic
 xonotic_root = /opt/Xonotic
-xonotic_servers = ~/.xsms/servers.yml
-xonotic_server_template = ~/.xsms/xonotic.server.cfg.tpl
+servers = ~/.xsms/servers.yml
+xonotic_server_template = ~/.xsms/templates/xonotic.server.cfg.tpl
 
 # Engines
-supervisor_server_template = ~/.xsms/supervisor.server.conf.tpl
-supervisor_conf = ~/.xsms/supervisor.conf
+supervisor_server_template = ~/.xsms/templates/supervisor.server.conf.tpl
+supervisor_conf = ~/.xsms/generated/supervisor.conf
 
 # SMB
 smb_init_script = bin/smb_init.sh
@@ -86,6 +86,12 @@ servers:
     port: 26004
     exec: ./all run dedicated -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
 ```
+
+This YAML file will generate a xonotic-compatible `.cfg` in `~/.xsms/generated/servers/`.
+
+#### Custom Server Configuration
+
+Custom server templates are defined in `~/.xsms/templates/servers/<servername>.cfg.tpl` where <servername> corresponds with the name of the server defined in the YAML. See the `tests` folder for an example.
 
 ## Usage
 

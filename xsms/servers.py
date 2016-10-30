@@ -51,9 +51,7 @@ class ServersCommand:
                 xonotic_root=self.conf['xonotic_root'],
             )
 
-            server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_servers_config_root'], server)
-
-            print(server_template)
+            server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_templates_servers_root'], server)
 
             if os.path.exists(server_template):
                 with open(server_template) as f:
@@ -62,7 +60,7 @@ class ServersCommand:
                     server_data += '// Custom Server Config\n\n' \
                                    '{0}\n'.format(custom_server_data)
 
-            with open('{}/{}.cfg'.format(self.conf['xsms_servers_config_root'], server), 'w') as f:
+            with open('{}/{}.cfg'.format(self.conf['xsms_generated_servers_root'], server), 'w') as f:
                 f.write(server_data)
 
     def start(self):

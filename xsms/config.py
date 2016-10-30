@@ -11,7 +11,10 @@ config = util.parse_config(config_file_with_path)
 
 conf = {
     'xsms_config_root': os.path.expanduser('~/.xsms'),
-    'xsms_servers_config_root': os.path.expanduser('~/.xsms/servers'),
+    'xsms_generated_root': os.path.expanduser('~/.xsms/generated'),
+    'xsms_templates_root': os.path.expanduser('~/.xsms/templates'),
+    'xsms_generated_servers_root': os.path.expanduser('~/.xsms/generated/servers'),
+    'xsms_templates_servers_root': os.path.expanduser('~/.xsms/templates/servers'),
     'xonotic_root': os.path.expanduser(config['xonotic_root']),
     'smb_init_script': os.path.expanduser(config['smb_init_script']),
     'smb_update_script': os.path.expanduser(config['smb_update_script']),
@@ -26,8 +29,9 @@ conf = {
 
 # Setup templates in ~/.xsms
 util.check_if_not_create(conf['servers_manifest'], 'config/servers.yml')
-util.check_if_not_create(conf['xonotic_server_template'], 'config/xonotic.server.cfg.tpl')
-util.check_if_not_create(conf['supervisor_server_template'], 'config/supervisor.server.conf.tpl')
+util.check_if_not_create(conf['xonotic_server_template'], 'config/templates/xonotic.server.cfg.tpl')
+util.check_if_not_create(conf['supervisor_server_template'], 'config/templates/supervisor.server.conf.tpl')
 
 # Make sure needed dirs exist
-os.makedirs(conf['xsms_servers_config_root'], exist_ok=True)
+os.makedirs(conf['xsms_generated_servers_root'], exist_ok=True)
+os.makedirs(conf['xsms_templates_servers_root'], exist_ok=True)
