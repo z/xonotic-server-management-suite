@@ -44,6 +44,8 @@ The defaults should work out of the box, if you want to make changes, edit the `
 [default]
 # Xonotic
 xonotic_root = /opt/Xonotic
+xonotic_userdir = ~/.xonotic
+xonotic_server_pk3dir = ~/.xonotic/servers.pk3dir
 servers = ~/.xsms/servers.yml
 xonotic_server_template = ~/.xsms/templates/xonotic.server.cfg.tpl
 
