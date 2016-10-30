@@ -25,4 +25,5 @@ services:
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
       - ~/.xsms/generated/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
-      - ~/.xsms/log:/var/log/xsms/
+      - ~/.xsms/log:/var/log/xsms
+      - ~/.xonotic/servers.pk3dir:/root/.xonotic/data/servers.pk3dir

@@ -3,13 +3,11 @@ version: '1'
 servers:
   insta:
     title: "(SMB) Instagib+Hook USA"
-    motd: |
-      Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin
-      On multiple lines
+    motd: "Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin, -z- | Hello from xsms"
     port: 26010
     maxplayers: 64
-    net_address: 127.0.0.1
-    exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    net_address: ""
+    exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig insta.cfg
   overkill:
     title: "(SMB) Overkill USA"
     motd: |
@@ -17,5 +15,5 @@ servers:
       On multiple lines
     port: 26004
     maxplayers: 32
-    net_address: 127.0.0.1
+    net_address: ""
     exec: ./all run dedicated -game modpack -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
