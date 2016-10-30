@@ -61,8 +61,12 @@ class ServersCommand:
         This method generates `cfg` **server** configs from `YAML`
         """
         with open(self.conf['xonotic_server_template']) as f:
-            server_template = f.read()
-            server_template = '{0}\n\n'.format(server_template)
+            xonotic_server_template = f.read()
+            xonotic_server_template = '{0}\n\n'.format(xonotic_server_template)
+
+        with open(self.conf['xonotic_smbmod_server_template']) as f:
+            smbmod_server_template = f.read()
+            smbmod_server_template = '{0}\n\n'.format(smbmod_server_template)
 
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)
@@ -70,15 +74,27 @@ class ServersCommand:
         current_date = datetime.now()
 
         for server in servers['servers']:
+
             server_data = '// Last Generated: {}\n'.format(current_date)
-            server_data += server_template.format(
-                servername=server,
-                title=servers['servers'][server]['title'],
-                motd=servers['servers'][server]['motd'],
-                port=servers['servers'][server]['port'],
-                maxplayers=servers['servers'][server]['maxplayers'],
-                net_address=servers['servers'][server]['net_address'],
-            )
+
+            if servers['servers'][server]['use_smbmod']:
+                server_data += smbmod_server_template.format(
+                    servername=server,
+                    title=servers['servers'][server]['title'],
+                    motd=servers['servers'][server]['motd'],
+                    port=servers['servers'][server]['port'],
+                    maxplayers=servers['servers'][server]['maxplayers'],
+                    net_address=servers['servers'][server]['net_address'],
+                )
+            else:
+                server_data += xonotic_server_template.format(
+                    servername=server,
+                    title=servers['servers'][server]['title'],
+                    motd=servers['servers'][server]['motd'],
+                    port=servers['servers'][server]['port'],
+                    maxplayers=servers['servers'][server]['maxplayers'],
+                    net_address=servers['servers'][server]['net_address'],
+                )
 
             custom_server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_templates_servers_root'], server)
 

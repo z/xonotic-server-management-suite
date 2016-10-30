@@ -1,12 +1,21 @@
 # This file is read from ~/.xsms/servers.yml make sure that's where you are editing it
 version: '1'
 servers:
+  vanilla:
+    title: "-z- Simple vanilla"
+    motd: "Welcome to ${hostname} | Owner: -z-"
+    port: 26000
+    maxplayers: 16
+    net_address: ""
+    use_smbmod: false
+    exec: ./all run dedicated +serverconfig vanilla.cfg
   insta:
     title: "(SMB) Instagib+Hook USA"
     motd: "Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin, -z- | Hello from xsms"
     port: 26010
     maxplayers: 64
     net_address: ""
+    use_smbmod: true
     exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig insta.cfg
   overkill:
     title: "(SMB) Overkill USA"
@@ -16,4 +25,5 @@ servers:
     port: 26004
     maxplayers: 32
     net_address: ""
+    use_smbmod: true
     exec: ./all run dedicated -game modpack -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg

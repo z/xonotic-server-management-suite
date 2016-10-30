@@ -3,7 +3,7 @@ import screenutils
 
 def start(servers, xonotic_root):
     """
-    This engine enables programatic control of screen.
+    This engine enables programmatic control of screen.
 
     :param servers:
     :param xonotic_root:
