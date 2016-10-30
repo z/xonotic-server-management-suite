@@ -94,6 +94,20 @@ class ServersCommand:
     def start(self, engine='screen'):
         """
         This method starts servers with an **engine**
+
+        Available engines:
+
+          * screen
+          * tmux
+          * supervisor
+
+        :Example:
+
+        >>> from xsms.servers import ServersCommand
+        >>> from xsms.config import conf
+        >>> server_cmd = ServersCommand(conf=conf)
+        >>> server_cmd.start(engine='tmux')
+
         """
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)

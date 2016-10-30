@@ -2,6 +2,19 @@ import screenutils
 
 
 def start(servers, xonotic_root):
+    """
+    This engine enables programatic control of screen.
+
+    :param servers:
+    :param xonotic_root:
+
+    >>> import yaml
+    >>> from xsms.engines import screen
+    >>> from xsms.config import conf
+    >>> with open(conf['servers_manifest']) as f:
+    >>>     servers = yaml.load(f)
+    >>> screen.start(servers=servers, xonotic_root=conf['xonotic_root'])
+    """
     screen_sessions = {}
 
     for server in servers['servers']:

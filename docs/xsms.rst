@@ -1,16 +1,11 @@
-XSMS Servers
+xsms.servers
 ===========================================================
 
 .. automodule:: xsms.servers
     :members:
 
-.. toctree::
-   :maxdepth: 2
-
-   intro
-
-Indices and tables
-==================
+.. autoclass:: xsms.engines
+    :members:
 
 * :ref:`genindex`
 * :ref:`modindex`
