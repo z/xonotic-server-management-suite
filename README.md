@@ -70,21 +70,27 @@ You can think of this as "xonotic-compose".
 **Example:**
 
 ```yaml
+# This file is read from ~/.xsms/servers.yml make sure that's where you are editing it
 version: '1'
 servers:
   insta:
     title: "(SMB) Instagib+Hook USA"
     motd: |
-      This is my long message of the day.
-      It can be multiple lines.
+      Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin
+      On multiple lines
     port: 26010
-    exec: ./all run dedicated -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    maxplayers: 64
+    net_address: 127.0.0.1
+    exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
   overkill:
     title: "(SMB) Overkill USA"
     motd: |
-      This is my other long message of the day.
+      This is my long message of the day.
+      On multiple lines
     port: 26004
-    exec: ./all run dedicated -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
+    maxplayers: 32
+    net_address: 127.0.0.1
+    exec: ./all run dedicated -game modpack -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
 ```
 
 This YAML file will generate a xonotic-compatible `.cfg` in `~/.xsms/generated/servers/`.

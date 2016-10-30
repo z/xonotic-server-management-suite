@@ -46,9 +46,12 @@ class ServersCommand:
         for server in servers['servers']:
             server_data = 'Last Generated: {}'.format(current_date)
             server_data += template.format(
-                gs_name=server,
-                gs_command=servers['servers'][server]['exec'],
-                xonotic_root=self.conf['xonotic_root'],
+                servername=server,
+                title=servers['servers'][server]['title'],
+                motd=servers['servers'][server]['motd'],
+                port=servers['servers'][server]['port'],
+                maxplayers=servers['servers'][server]['maxplayers'],
+                net_address=servers['servers'][server]['net_address'],
             )
 
             server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_templates_servers_root'], server)
@@ -56,7 +59,6 @@ class ServersCommand:
             if os.path.exists(server_template):
                 with open(server_template) as f:
                     custom_server_data = f.read()
-                    print(custom_server_data)
                     server_data += '// Custom Server Config\n\n' \
                                    '{0}\n'.format(custom_server_data)
 
