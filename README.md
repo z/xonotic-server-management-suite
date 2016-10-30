@@ -2,7 +2,8 @@
 
 For managing infrastructure, tests, deployments of Xonotic game servers.
 
-[![Build Status](https://travis-ci.org/z/xonotic-server-management-suite.svg?branch=develop)](https://travis-ci.org/z/xonotic-server-management-suite)
+[![Build Status](https://travis-ci.org/z/xonotic-server-management-suite.svg?branch=develop)](https://travis-ci.org/z/xonotic-server-management-suite) [![Documentation Status](https://readthedocs.org/projects/xonotic-server-management-suite/badge/?version=latest)](http://xonotic-server-management-suite.readthedocs.io/en/latest/?badge=latest)
+
 
 **Features**:
 
