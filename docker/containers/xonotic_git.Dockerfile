@@ -59,6 +59,11 @@ RUN git clone https://github.com/z/xonotic-server-management-suite /opt/xsms && 
     cd /opt/xsms/ && \
     python3 setup.py install
 
+RUN systemctl enable supervisor
+RUN touch /var/run/supervisor.sock
+RUN chmod 777 /var/run/supervisor.sock
+RUN service supervisor restart
+
 # These can be built into the image for deployment (put in docker/ dir)
 # COPY xsms.cfg ~/.xsms.cfg
 # COPY servers.yml ~/.xsms/servers.yml

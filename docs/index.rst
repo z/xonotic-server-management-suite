@@ -8,26 +8,46 @@ Welcome to Xonotic Server Management Suite's documentation!
 
 For managing infrastructure, tests, deployments of Xonotic game servers.
 
-Current Features:
+.. image:: https://travis-ci.org/z/xonotic-server-management-suite.svg?branch=develop
+    :target: https://travis-ci.org/z/xonotic-server-management-suite
 
-* Dockerized Xonotic git and stable builds
-* SMB configurations integrated
-* SMB Modpack support
-* Xonotic Map Manager integration
+**Features**
 
-Please see the README.md for installation instructions and quickstart.
+* Dockerized `Xonotic`_ git and stable builds
+* `SMB configurations`_ integrated
+* `SMB Modpack`_ support
+* `Xonotic Map Manager`_ integration
+* Define your servers in `YAML` or `cfg`
+* Works with your existing workflow using:
+    * `screen`_
+    * `tmux`_
+    * `supervisor`_
 
+
+.. _Xonotic: http://xonotic.org
+.. _SMB Modpack: https://github.com/MarioSMB/smb-servers
+.. _SMB configurations: https://github.com/MarioSMB/smb-servers
+.. _Xonotic Map Manager: https://github.com/z/xonotic-map-manager
+.. _screen: https://www.gnu.org/software/screen
+.. _tmux: https://tmux.github.io
+.. _supervisor: http://supervisord.org
+
+**Get Started**
 
 .. toctree::
    :maxdepth: 2
 
    intro
+   configuration
+   usage
+   tests
    xsms
+   license
+
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

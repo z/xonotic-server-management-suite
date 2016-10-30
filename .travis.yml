@@ -3,7 +3,8 @@ python:
   - 3.4
 install:
   - pip install -r dev-requirements.in
+#  - pip install -r requirements.in
   - python setup.py install
 script:
   - python setup.py test
-#  - flake8 --ignore=E221,E501 challengeauth.py test_challengeauth.py
+  - flake8 --ignore=E221,E501,F401 xsms/*.py

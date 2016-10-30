@@ -20,7 +20,7 @@ setup(
     packages=find_packages(exclude=('tests', 'docs')),
     package_data={'': ['LICENSE', 'README.md', 'docs/*', 'config/*', 'bin/*']},
     include_package_data=True,
-    install_requires=['pyyaml', 'screenutils'],
+    install_requires=['pyyaml', 'screenutils', 'libtmux', 'ptpython'],
     setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     entry_points={

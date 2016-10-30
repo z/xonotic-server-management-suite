@@ -36,7 +36,7 @@ def main():
         servers = ServersCommand(conf=conf)
 
         if args.subcommand == 'start':
-            servers.start()
+            servers.start(engine=args.engine)
 
         # supervisor conf needs to be generated if using supervisor
         if args.subcommand == 'build':
@@ -59,6 +59,7 @@ def parse_args():
 
     parser_servers = subparsers.add_parser('servers', help='take actions related to the servers')
     parser_servers.add_argument('subcommand', choices=['start', 'build'], type=str)
+    parser_servers.add_argument('--engine', '-e', choices=['screen', 'tmux', 'supervisor'], help='What engine to start with')
 
     return parser.parse_args()
 

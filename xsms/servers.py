@@ -1,7 +1,9 @@
-from datetime import datetime
-import screenutils
 import yaml
 import os
+from datetime import datetime
+from xsms.engines import screen
+from xsms.engines import tmux
+from xsms.engines import supervisor
 """
 Created on Oct 30, 2016
 @author: Tyler Mulligan
@@ -28,9 +30,13 @@ class ServersCommand:
         """
         This method generates **engine** configs
         """
+        with open(self.conf['supervisor_conf_template']) as f:
+            conf_template = f.read()
+            conf_template = '{0}\n\n'.format(conf_template)
+
         with open(self.conf['supervisor_server_template']) as f:
-            template = f.read()
-            template = '{0}\n\n'.format(template)
+            server_template = f.read()
+            server_template = '{0}\n\n'.format(server_template)
 
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)
@@ -38,11 +44,10 @@ class ServersCommand:
         current_date = datetime.now()
 
         supervisor_data = '# Last Generated: {}\n' \
-                          '[supervisord]\n' \
-                          'nodaemon=true\n'.format(current_date)
+                          '{}'.format(current_date, conf_template)
 
         for server in servers['servers']:
-            supervisor_data += template.format(
+            supervisor_data += server_template.format(
                 gs_name=server,
                 gs_command=servers['servers'][server]['exec'],
                 xonotic_root=self.conf['xonotic_root'],
@@ -56,8 +61,8 @@ class ServersCommand:
         This method generates `cfg` **server** configs from `YAML`
         """
         with open(self.conf['xonotic_server_template']) as f:
-            template = f.read()
-            template = '{0}\n\n'.format(template)
+            server_template = f.read()
+            server_template = '{0}\n\n'.format(server_template)
 
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)
@@ -66,7 +71,7 @@ class ServersCommand:
 
         for server in servers['servers']:
             server_data = '// Last Generated: {}\n'.format(current_date)
-            server_data += template.format(
+            server_data += server_template.format(
                 servername=server,
                 title=servers['servers'][server]['title'],
                 motd=servers['servers'][server]['motd'],
@@ -75,10 +80,10 @@ class ServersCommand:
                 net_address=servers['servers'][server]['net_address'],
             )
 
-            server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_templates_servers_root'], server)
+            custom_server_template = '{}/{}.cfg.tpl'.format(self.conf['xsms_templates_servers_root'], server)
 
-            if os.path.exists(server_template):
-                with open(server_template) as f:
+            if os.path.exists(custom_server_template):
+                with open(custom_server_template) as f:
                     custom_server_data = f.read()
                     server_data += '// Custom Server Config\n\n' \
                                    '{0}\n'.format(custom_server_data)
@@ -86,21 +91,35 @@ class ServersCommand:
             with open('{}/{}.cfg'.format(self.conf['xsms_generated_servers_root'], server), 'w') as f:
                 f.write(server_data)
 
-    def start(self):
+    def start(self, engine='screen'):
         """
-        This method starts servers with an engine
-        """
-        screen_sessions = {}
+        This method starts servers with an **engine**
 
+        Available engines:
+
+          * screen
+          * tmux
+          * supervisor
+
+        :Example:
+
+        >>> from xsms.servers import ServersCommand
+        >>> from xsms.config import conf
+        >>> server_cmd = ServersCommand(conf=conf)
+        >>> server_cmd.start(engine='tmux')
+
+        """
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)
 
-        for server in servers['servers']:
-            # using screen
-            screen_sessions[server] = screenutils.Screen(server, True)
-            screen_sessions[server].send_commands('cd {0}'.format(self.conf['xonotic_root']))
-            screen_sessions[server].send_commands(servers['servers'][server]['exec'])
+        # using screen
+        if engine == 'screen':
+            screen.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
 
-        screenutils.list_screens()
+        # using supervisor
+        if engine == 'tmux':
+            tmux.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
 
-        # TODO: using supervisor
+        # using supervisor
+        if engine == 'supervisor':
+            supervisor.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
