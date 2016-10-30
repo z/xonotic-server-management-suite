@@ -40,7 +40,7 @@ def main():
 
         # supervisor conf needs to be generated if using supervisor
         if args.subcommand == 'build':
-            servers.build()
+            servers.generate_engine_configs()
 
 
 def parse_args():

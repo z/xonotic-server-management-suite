@@ -2,14 +2,14 @@ version: '2'
 services:
   xonotic_stable:
     build:
-      context: build
+      context: docker
       dockerfile: containers/xonotic_stable.Dockerfile
     command: ./server_linux.sh -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-overkill.cfg
     ports:
       - "26011-26014:26011-26014/udp"
   xonotic_git:
     build:
-      context: build
+      context: docker
       dockerfile: containers/xonotic_git.Dockerfile
     # Run a single server
     #command: ./all run dedicated +serverconfig server.cfg
@@ -21,8 +21,13 @@ services:
     ports:
       - "26000-26010:26000-26010/udp"
     volumes:
-      - ~/.xonotic-smb:/root/.xonotic
+      # ENV config
+      - ~/.xsms/generated/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      # Xonotic Server Config
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
-      - ~/.xsms/supervisor.server.conf.tpl:/root/.xsms/supervisor.server.conf.tpl
-      - ~/.xsms/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      - ~/.xonotic/servers.pk3dir:/root/.xonotic/data/servers.pk3dir
+      # Mods
+      - ~/.xonotic-smb:/root/.xonotic
+      # Convenience
+      - ~/.xsms/log:/var/log/xsms

@@ -6,12 +6,23 @@
 Welcome to Xonotic Server Management Suite's documentation!
 ===========================================================
 
-Contents:
+For managing infrastructure, tests, deployments of Xonotic game servers.
+
+Current Features:
+
+* Dockerized Xonotic git and stable builds
+* SMB configurations integrated
+* SMB Modpack support
+* Xonotic Map Manager integration
 
 Please see the README.md for installation instructions and quickstart.
 
+
 .. toctree::
    :maxdepth: 2
+
+   intro
+   xsms
 
 Indices and tables
 ==================

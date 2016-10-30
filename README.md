@@ -24,7 +24,7 @@ Current Features:
 
 Without Docker, you'll need to install Xonotic locally. Xonotic releases are available at [Xonotic.org](http://www.xonotic.org/download) and instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access).
 
-Use the Dockerfiles in `build/containers` for inspiration.
+Use the Dockerfiles in `docker/containers` for inspiration.
 
 ## Install
 
@@ -44,11 +44,14 @@ The defaults should work out of the box, if you want to make changes, edit the `
 [default]
 # Xonotic
 xonotic_root = /opt/Xonotic
+xonotic_userdir = ~/.xonotic
+xonotic_server_pk3dir = ~/.xonotic/servers.pk3dir
 servers = ~/.xsms/servers.yml
+xonotic_server_template = ~/.xsms/templates/xonotic.server.cfg.tpl
 
 # Engines
-supervisor_server_template = ~/.xsms/supervisor.server.conf.tpl
-supervisor_conf = ~/.xsms/supervisor.conf
+supervisor_server_template = ~/.xsms/templates/supervisor.server.conf.tpl
+supervisor_conf = ~/.xsms/generated/supervisor.conf
 
 # SMB
 smb_init_script = bin/smb_init.sh
@@ -69,22 +72,32 @@ You can think of this as "xonotic-compose".
 **Example:**
 
 ```yaml
+# This file is read from ~/.xsms/servers.yml make sure that's where you are editing it
 version: '1'
 servers:
   insta:
     title: "(SMB) Instagib+Hook USA"
-    motd: |
-      This is my long message of the day.
-      It can be multiple lines.
+    motd: "Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin, -z- | Hello from xsms"
     port: 26010
-    exec: ./all run dedicated -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
+    maxplayers: 64
+    net_address: ""
+    exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig insta.cfg
   overkill:
     title: "(SMB) Overkill USA"
     motd: |
-      This is my other long message of the day.
+      This is my long message of the day.
+      On multiple lines
     port: 26004
-    exec: ./all run dedicated -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
+    maxplayers: 32
+    net_address: ""
+    exec: ./all run dedicated -game modpack -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
 ```
+
+This YAML file will generate a xonotic-compatible `.cfg` in `~/.xsms/generated/servers/`.
+
+#### Custom Server Configuration
+
+Custom server templates are defined in `~/.xsms/templates/servers/<servername>.cfg.tpl` where <servername> corresponds with the name of the server defined in the YAML. See the `tests` folder for an example.
 
 ## Usage
 
@@ -107,6 +120,7 @@ In the example below, the server `insta` is used.
 
 ```
 docker-compose exec xonotic_git /bin/bash  # connect to the docker container
+xmm update                                 # get th latest package list
 xmm -s insta discover                      # finds any maps in this server's data dir
 xmm -s insta install eggandscrambled.pk3   # install a new map
 xmm -s insta list                          # list all maps tracked for this server
@@ -114,6 +128,6 @@ xmm -s insta list                          # list all maps tracked for this serv
 
 #### Without Docker
 
-Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and  `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
+Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
 
 For daemons, conf files need to be generated with `xsms servers build`.
