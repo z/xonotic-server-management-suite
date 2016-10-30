@@ -66,7 +66,7 @@ to `~/.xonotic` in the containers.
 
 ## Documentation
 
-Check in the [docs](/docs) folder.
+Documentation is hosted on [readthedocs.io](http://xonotic-server-management-suite.readthedocs.io/en/latest).
 
 ## License
 
