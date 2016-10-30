@@ -1,7 +1,8 @@
-from datetime import datetime
-import screenutils
 import yaml
 import os
+from datetime import datetime
+from xsms.engines import screen
+from xsms.engines import tmux
 """
 Created on Oct 30, 2016
 @author: Tyler Mulligan
@@ -86,21 +87,17 @@ class ServersCommand:
             with open('{}/{}.cfg'.format(self.conf['xsms_generated_servers_root'], server), 'w') as f:
                 f.write(server_data)
 
-    def start(self):
+    def start(self, engine='screen'):
         """
         This method starts servers with an engine
         """
-        screen_sessions = {}
-
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)
 
-        for server in servers['servers']:
-            # using screen
-            screen_sessions[server] = screenutils.Screen(server, True)
-            screen_sessions[server].send_commands('cd {0}'.format(self.conf['xonotic_root']))
-            screen_sessions[server].send_commands(servers['servers'][server]['exec'])
+        # using screen
+        if engine == 'screen':
+            screen.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
 
-        screenutils.list_screens()
-
-        # TODO: using supervisor
+        # using supervisor
+        if engine == 'tmux':
+            tmux.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
