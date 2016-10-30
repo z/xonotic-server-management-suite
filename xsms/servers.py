@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 from xsms.engines import screen
 from xsms.engines import tmux
+from xsms.engines import supervisor
 """
 Created on Oct 30, 2016
 @author: Tyler Mulligan
@@ -89,7 +90,7 @@ class ServersCommand:
 
     def start(self, engine='screen'):
         """
-        This method starts servers with an engine
+        This method starts servers with an **engine**
         """
         with open(self.conf['servers_manifest']) as f:
             servers = yaml.load(f)
@@ -101,3 +102,7 @@ class ServersCommand:
         # using supervisor
         if engine == 'tmux':
             tmux.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
+
+        # using supervisor
+        if engine == 'supervisor':
+            supervisor.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
