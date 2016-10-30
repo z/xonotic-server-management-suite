@@ -107,6 +107,7 @@ In the example below, the server `insta` is used.
 
 ```
 docker-compose exec xonotic_git /bin/bash  # connect to the docker container
+xmm update                                 # get th latest package list
 xmm -s insta discover                      # finds any maps in this server's data dir
 xmm -s insta install eggandscrambled.pk3   # install a new map
 xmm -s insta list                          # list all maps tracked for this server
