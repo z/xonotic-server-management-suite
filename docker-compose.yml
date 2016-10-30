@@ -24,5 +24,5 @@ services:
       - ~/.xonotic-smb:/root/.xonotic
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
-      - ~/.xsms/supervisor.server.conf.tpl:/root/.xsms/supervisor.server.conf.tpl
-      - ~/.xsms/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      - ~/.xsms/generated/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      - ~/.xsms/log:/var/log/xsms/

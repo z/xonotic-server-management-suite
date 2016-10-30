@@ -19,7 +19,7 @@ class ServersCommand:
 
         current_date = datetime.now()
 
-        supervisor_data = 'Last Generated: {}' \
+        supervisor_data = '# Last Generated: {}\n' \
                           '[supervisord]\n' \
                           'nodaemon=true\n'.format(current_date)
 
@@ -44,7 +44,7 @@ class ServersCommand:
         current_date = datetime.now()
 
         for server in servers['servers']:
-            server_data = 'Last Generated: {}'.format(current_date)
+            server_data = '// Last Generated: {}\n'.format(current_date)
             server_data += template.format(
                 servername=server,
                 title=servers['servers'][server]['title'],
