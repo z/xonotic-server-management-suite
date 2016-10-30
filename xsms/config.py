@@ -35,6 +35,7 @@ util.check_if_not_create(conf['supervisor_server_template'], 'config/templates/s
 # Make sure needed dirs exist
 os.makedirs(conf['xsms_generated_servers_root'], exist_ok=True)
 os.makedirs(conf['xsms_templates_servers_root'], exist_ok=True)
+os.makedirs('~/.xonotic', exist_ok=True)
 
 # Setup symlinks
 if not os.path.exists(os.path.expanduser('~/.xonotic/servers.pk3dir')):
