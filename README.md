@@ -42,6 +42,7 @@ xsms servers start -e screen
 ## Requirements
 
 * Python 3
+* A supported engine (screen, tmux, supervisor)
 
 #### With Docker
 
@@ -50,7 +51,11 @@ xsms servers start -e screen
 
 #### Without Docker
 
-Without Docker, you'll need to install Xonotic locally. Xonotic releases are available at [Xonotic.org](http://www.xonotic.org/download) and instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access).
+* Local installation of Xonotic:
+    * Xonotic releases are available at [Xonotic.org](http://www.xonotic.org/download)
+    * Instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access)
+
+instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access)
 
 Use the Dockerfiles in `docker/containers` for inspiration.
 
