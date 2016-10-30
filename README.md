@@ -131,3 +131,20 @@ xmm -s insta list                          # list all maps tracked for this serv
 Without docker, XSMS can manage game servers a few different ways using `xsms servers start` to start up your servers defined in `~/.xsms/servers.yml`. Supported (or planned) methods include: `screen, tmux` for interactive management and `supervisor, circus` for daemon management. If you want simple map management, XMM Can be installed separately.
 
 For daemons, conf files need to be generated with `xsms servers build`.
+
+## Tests
+
+Unit tests can be run with `py.test` and coverage tests with `tox`.
+
+```
+make tests
+make tests-coverage
+make lint
+make clean
+```
+
+## License
+
+Copyright (c) 2016 Tyler Mulligan (z@xnz.me) and contributors.
+
+Distributed under the MIT license. See the LICENSE file for more details.
