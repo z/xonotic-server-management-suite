@@ -2,14 +2,32 @@ from datetime import datetime
 import screenutils
 import yaml
 import os
+"""
+Created on Oct 30, 2016
+@author: Tyler Mulligan
+"""
 
 
 class ServersCommand:
+    """This class handles the `xsms servers` subcommand
+
+    :param conf:
+        The conf dictionary from `config.py`
+    :type conf: ``dictionary``
+
+    .. note::
+        This file is subject to change with the addition of new
+        engines until and API has been established.
+
+    """
 
     def __init__(self, conf):
         self.conf = conf
 
     def generate_engine_configs(self):
+        """
+        This method generates **engine** configs
+        """
         with open(self.conf['supervisor_server_template']) as f:
             template = f.read()
             template = '{0}\n\n'.format(template)
@@ -34,6 +52,9 @@ class ServersCommand:
             f.write(supervisor_data)
 
     def generate_server_configs(self):
+        """
+        This method generates `cfg` **server** configs from `YAML`
+        """
         with open(self.conf['xonotic_server_template']) as f:
             template = f.read()
             template = '{0}\n\n'.format(template)
@@ -66,6 +87,9 @@ class ServersCommand:
                 f.write(server_data)
 
     def start(self):
+        """
+        This method starts servers with an engine
+        """
         screen_sessions = {}
 
         with open(self.conf['servers_manifest']) as f:

@@ -21,9 +21,13 @@ services:
     ports:
       - "26000-26010:26000-26010/udp"
     volumes:
-      - ~/.xonotic-smb:/root/.xonotic
+      # ENV config
+      - ~/.xsms/generated/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      # Xonotic Server Config
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml
-      - ~/.xsms/generated/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
-      - ~/.xsms/log:/var/log/xsms
       - ~/.xonotic/servers.pk3dir:/root/.xonotic/data/servers.pk3dir
+      # Mods
+      - ~/.xonotic-smb:/root/.xonotic
+      # Convenience
+      - ~/.xsms/log:/var/log/xsms
