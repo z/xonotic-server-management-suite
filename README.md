@@ -4,7 +4,6 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
 
 [![Build Status](https://travis-ci.org/z/xonotic-server-management-suite.svg?branch=develop)](https://travis-ci.org/z/xonotic-server-management-suite) [![Documentation Status](https://readthedocs.org/projects/xonotic-server-management-suite/badge/?version=latest)](http://xonotic-server-management-suite.readthedocs.io/en/latest/?badge=latest)
 
-
 **Features**:
 
 * Dockerized [Xonotic](http://xonotic.org) git and stable builds
@@ -57,8 +56,6 @@ xsms servers start -e screen
     * Xonotic releases are available at [Xonotic.org](http://www.xonotic.org/download)
     * Instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access)
 
-instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access)
-
 Use the Dockerfiles in `docker/containers` for inspiration.
 
 ## Install
@@ -68,8 +65,8 @@ python setup.py install  # this clones the server configs and modpack
 xsms smbmod init         # setup SMB modpack and assets (optional)
 ```
 
-All custom server assets go in `~/.xonotic-smb` on the host which gets mounted
-to `~/.xonotic` in the containers.
+If using docker, all custom server assets go in `~/.xonotic-smb` on the host
+which gets mounted to `~/.xonotic` in the containers.
 
 ## Documentation
 

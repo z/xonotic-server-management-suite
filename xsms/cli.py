@@ -4,7 +4,7 @@ import argparse
 import subprocess
 from .config import conf
 from .__about__ import __version__
-from .servers import ServersCommand
+from .servers import Command
 
 
 def main():
@@ -33,7 +33,7 @@ def main():
 
     if args.command == 'servers':
 
-        servers = ServersCommand(conf=conf)
+        servers = Command(conf=conf)
 
         if args.subcommand == 'start':
             servers.start(engine=args.engine)

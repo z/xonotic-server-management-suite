@@ -1,8 +1,9 @@
-Servers
-=======
+Engine
+======
 
-.. automodule:: xsms.servers
+.. automodule:: xsms.engine
     :members:
+
 
 * :ref:`genindex`
 * :ref:`modindex`

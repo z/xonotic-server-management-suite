@@ -40,8 +40,10 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
    :maxdepth: 2
 
    intro
+   installation
    configuration
    usage
+   engine
    engines
    xsms
    tests
