@@ -1,5 +1,14 @@
+API
+===
+
+Engine
+------
+
+.. automodule:: xsms.engine
+    :members:
+
 Engines
-=======
+-------
 
 .. automodule:: xsms.engines.screen
     :members:
@@ -10,6 +19,11 @@ Engines
 .. automodule:: xsms.engines.supervisor
     :members:
 
+Servers
+-------
+
+.. automodule:: xsms.servers
+    :members:
 
 * :ref:`genindex`
 * :ref:`modindex`
