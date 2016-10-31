@@ -57,8 +57,6 @@ xsms servers start -e screen
     * Xonotic releases are available at [Xonotic.org](http://www.xonotic.org/download)
     * Instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access)
 
-instructions for git are [available in the Xonotic wiki](https://gitlab.com/xonotic/xonotic/wikis/Repository_Access)
-
 Use the Dockerfiles in `docker/containers` for inspiration.
 
 ## Install
