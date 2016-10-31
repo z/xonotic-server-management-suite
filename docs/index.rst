@@ -43,9 +43,7 @@ For managing infrastructure, tests, deployments of Xonotic game servers.
    installation
    configuration
    usage
-   engine
-   engines
-   xsms
+   api
    tests
    license
 
