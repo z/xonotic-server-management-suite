@@ -1,7 +1,7 @@
 Configuration
 =============
 
-The defaults should work out of the box, if you want to make changes, edit the `~/.xsms.cfg` file.::
+The defaults should work out of the box, if you want to make changes, edit the ``~/.xsms.cfg`` file.::
 
     [default]
     # Xonotic
@@ -27,7 +27,7 @@ The defaults should work out of the box, if you want to make changes, edit the `
 Defining Servers
 ----------------
 
-XSMS provides a YAML specification for defining the basic meta information for servers.
+XSMS provides a ``YAML`` specification for defining the basic meta information for servers.
 
 You can think of this as *xonotic-compose*.
 
@@ -56,12 +56,12 @@ You can think of this as *xonotic-compose*.
         exec: ./all run dedicated -game modpack -game data_csprogs -game data_overkill -sessionid overkill +serverconfig configs/info-overkill.cfg
 
 
-This YAML file will generate a xonotic-compatible `.cfg` in `~/.xsms/generated/servers/`.
+This YAML file will generate a xonotic-compatible ``.cfg`` in ``~/.xsms/generated/servers/``.
 
 Custom Server Configuration
 ---------------------------
 
-Custom server templates are defined in `~/.xsms/templates/servers/<servername>.cfg.tpl` where <servername> corresponds with the name of the server defined in the YAML. See the `tests` folder for an example.
+Custom server templates are defined in ``~/.xsms/templates/servers/<servername>.cfg.tpl`` where ``<servername>`` corresponds with the name of the server defined in the YAML. See the ``tests`` folder for an example.
 
 
 * :ref:`genindex`

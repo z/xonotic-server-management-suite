@@ -6,12 +6,13 @@
 # A GNU Makefile for the project.
 #
 
-.PHONY: help clean lint tests tests-coverage
+.PHONY: help clean lint docs tests tests-coverage
 
 help:
 	@echo "Use \`make <target>', where <target> is one of the following:"
 	@echo "  clean          - remove all generated files"
 	@echo "  lint           - check code style with flake8"
+	@echo "  docs           - make docs"
 	@echo "  tests          - run tests"
 	@echo "  tests-coverage - obtain test coverage"
 
@@ -22,6 +23,9 @@ clean:
 
 lint:
 	@flake8 --ignore=E221,E501 challengeauth.py test_challengeauth.py
+
+docs: docs/
+	@cd docs && $(MAKE) html
 
 tests:
 	@py.test

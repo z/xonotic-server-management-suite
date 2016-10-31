@@ -5,7 +5,7 @@ Intro
 
 Xonotic Server Management Suite works with your existing workflow by generating configs for
 and ochestrating popular management software such as the following, which are henceforth
-referred to as `engines`:
+referred to as ``engines``:
 
     * `screen`_
     * `tmux`_
@@ -17,12 +17,12 @@ referred to as `engines`:
 .. _supervisor: http://supervisord.org
 .. _docker: https://www.docker.com
 
-The configuration files are generated with a combination of `yml`, `conf` and `cfg` and provide
+The configuration files are generated with a combination of ``yml``, ``conf`` and ``cfg`` and provide
 many opportunities for you to inject your existing assets and confings.
 
-Lets start with a simple `servers.yml` to define a server that generates a server configuration
-for a vanilla server, `vanilla.cfg`. This gets put in `~/.xonotic/data/server.pk3dir`, which to
-DarkPlaces engine appears as `~/.xonotic/data`, so we can reference it simply as `vanilla.cfg`::
+Lets start with a simple ``servers.yml`` to define a server that generates a server configuration
+for a vanilla server, ``vanilla.cfg``. This gets put in ``~/.xonotic/data/server.pk3dir``, which to
+DarkPlaces engine appears as ``~/.xonotic/data``, so we can reference it simply as ``vanilla.cfg``::
 
     # This file is read from ~/.xsms/servers.yml make sure that's where you are editing it
     version: '1'
@@ -35,7 +35,7 @@ DarkPlaces engine appears as `~/.xonotic/data`, so we can reference it simply as
         net_address: ""
         exec: ./all run dedicated +serverconfig vanilla.cfg
 
-The following command generates the `vanilla.cfg` file the `exec` line above references::
+The following command generates the ``vanilla.cfg`` file the ``exec`` line above references::
 
     xsms servers build
 
