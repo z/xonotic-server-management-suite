@@ -17,20 +17,20 @@ class Session(Engine):
         This engine enables programmatic control of ``tmux``
 
         :param xonotic_root: The directory for the ``exec`` command
-        :type xonotic_root: ``string``
+        :type xonotic_root: ``str``
 
-        :param servers: A dictionary of servers as defined in ``servers.yml``
-        :type servers: ``dict``
-
-        .. note::
-            This tries to create a new session with Popen() but it
-            does not always work. It is therefore better to already
-            have a tmux session running before using this command.
+        :param filename: A file in the ``servers.yml`` format
+        :type filename: ``str``
 
         >>> from xsms.engines.tmux import Session as tmux
         >>> from xsms.config import conf
         >>> session = tmux(conf=conf)
         >>> servers = session.start()
+
+        .. note::
+            This tries to create a new session with Popen() but it
+            does not always work. It is therefore better to already
+            have a tmux session running before using this command.
         """
 
         server = libtmux.Server()
