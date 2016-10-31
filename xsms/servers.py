@@ -1,26 +1,30 @@
 import yaml
 import os
 from datetime import datetime
-from xsms.engines import screen
-from xsms.engines import tmux
-from xsms.engines import supervisor
+from xsms.engines.screen import Session as screenSession
+from xsms.engines.tmux import Session as tmuxSession
+from xsms.engines.supervisor import Session as supervisorSession
 """
 Created on Oct 30, 2016
 @author: Tyler Mulligan
 """
 
 
-class ServersCommand:
-    """This class handles the `xsms servers` subcommand
+class Command:
+    """This class handles the ``xsms servers`` subcommand
 
     :param conf:
-        The conf dictionary from `config.py`
-    :type conf: ``dictionary``
+        The conf dictionary from ``config.py``
+    :type conf: ``dict``
 
-    .. note::
-        This file is subject to change with the addition of new
-        engines until and API has been established.
+    :returns object: ``self``
+        The session for a ``xsms servers`` subcommand
 
+    :Example:
+
+    >>> from xsms.servers import Command
+    >>> from xsms.config import conf
+    >>> session = Command(conf=conf)
     """
 
     def __init__(self, conf):
@@ -28,7 +32,7 @@ class ServersCommand:
 
     def generate_engine_configs(self):
         """
-        This method generates **engine** configs
+        This method generates ``engine`` configs
         """
         with open(self.conf['supervisor_conf_template']) as f:
             conf_template = f.read()
@@ -58,7 +62,7 @@ class ServersCommand:
 
     def generate_server_configs(self):
         """
-        This method generates `cfg` **server** configs from `YAML`
+        This method generates ``cfg`` `server` configs from ``YAML``
         """
         with open(self.conf['xonotic_server_template']) as f:
             xonotic_server_template = f.read()
@@ -109,7 +113,11 @@ class ServersCommand:
 
     def start(self, engine='screen'):
         """
-        This method starts servers with an **engine**
+        This method starts servers defined in ``~/.xsms/servers/yml`` with an ``engine``
+
+        :param engine:
+            A supported engine (``screen``, ``tmux``, ``supervisor``)
+        :type engine: ``string``
 
         Available engines:
 
@@ -119,23 +127,23 @@ class ServersCommand:
 
         :Example:
 
-        >>> from xsms.servers import ServersCommand
+        >>> from xsms.servers import Command
         >>> from xsms.config import conf
-        >>> server_cmd = ServersCommand(conf=conf)
-        >>> server_cmd.start(engine='tmux')
-
+        >>> session = Command(conf=conf)
+        >>> session.start(engine='tmux')
         """
-        with open(self.conf['servers_manifest']) as f:
-            servers = yaml.load(f)
 
         # using screen
         if engine == 'screen':
-            screen.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
+            screen = screenSession(conf=self.conf)
+            screen.start(xonotic_root=self.conf['xonotic_root'])
 
         # using supervisor
         if engine == 'tmux':
-            tmux.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
+            tmux = tmuxSession(conf=self.conf)
+            tmux.start(filename=self.conf['servers_manifest'], xonotic_root=self.conf['xonotic_root'])
 
         # using supervisor
         if engine == 'supervisor':
-            supervisor.start(servers=servers, xonotic_root=self.conf['xonotic_root'])
+            supervisor = supervisorSession(conf=self.conf)
+            supervisor.start()

@@ -1,25 +1,36 @@
 import screenutils
+from xsms.engine import Engine
+"""
+Created on Oct 30, 2016
+@author: Tyler Mulligan
+"""
 
 
-def start(servers, xonotic_root):
+class Session(Engine):
     """
-    This engine enables programmatic control of screen.
-
-    :param servers:
-    :param xonotic_root:
-
-    >>> import yaml
-    >>> from xsms.engines import screen
-    >>> from xsms.config import conf
-    >>> with open(conf['servers_manifest']) as f:
-    >>>     servers = yaml.load(f)
-    >>> screen.start(servers=servers, xonotic_root=conf['xonotic_root'])
+    This is the ``engine`` class for ``screen``
     """
-    screen_sessions = {}
+    def start(self, xonotic_root, filename=None):
+        """
+        This engine enables programmatic control of ``screen``
 
-    for server in servers['servers']:
-        screen_sessions[server] = screenutils.Screen(server, True)
-        screen_sessions[server].send_commands('cd {0}'.format(xonotic_root))
-        screen_sessions[server].send_commands(servers['servers'][server]['exec'])
+        :param servers: A dictionary of servers as defined in ``servers.yml``
+        :type servers: ``dict``
 
-    screenutils.list_screens()
+        :param xonotic_root: The directory for the ``exec`` command
+        :type xonotic_root: ``string``
+
+        >>> from xsms.engines.screen import Session as screen
+        >>> from xsms.config import conf
+        >>> session = screen(conf=conf)
+        >>> servers = session.start(xonotic_root=conf['xonotic_root'])
+        """
+
+        screen_sessions = {}
+
+        for server in self.servers['servers']:
+            screen_sessions[server] = screenutils.Screen(server, True)
+            screen_sessions[server].send_commands('cd {0}'.format(xonotic_root))
+            screen_sessions[server].send_commands(self.servers['servers'][server]['exec'])
+
+        screenutils.list_screens()
