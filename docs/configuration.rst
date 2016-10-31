@@ -8,9 +8,9 @@ The defaults should work out of the box, if you want to make changes, edit the `
     xonotic_root = /opt/Xonotic
     xonotic_userdir = ~/.xonotic
     xonotic_server_pk3dir = ~/.xonotic/servers.pk3dir
-    servers = ~/.xsms/servers.yml
-    xonotic_server_template = ~/.xsms/templates/xonotic.server.cfg.tpl
-    xonotic_smbmod_server_template = ~/.xsms/templates/xonotic.smbmod-server.cfg.tpl
+    xonotic_servers = ~/.xsms/servers.yml
+    xonotic_server_template = ~/.xsms/templates/xonotic/xonotic.server.cfg.tpl
+    xonotic_smbmod_server_template = ~/.xsms/templates/xonotic/xonotic.smbmod-server.cfg.tpl
 
     # Engines
     supervisor_server_template = ~/.xsms/templates/supervisor.server.conf.tpl
@@ -22,7 +22,7 @@ The defaults should work out of the box, if you want to make changes, edit the `
     smb_update_script = ~/.xonotic-smb/modpack/update.sh
     smb_build_script = ~/.xonotic-smb/modpack/build.sh
     smb_cache_path = ~/.xonotic-smb/modpack/.cache
-    data_csprogs = ~/.xonotic-smb/data_csprogs
+    smb_data_csprogs = ~/.xonotic-smb/data_csprogs
 
 Defining Servers
 ----------------
@@ -61,7 +61,28 @@ This YAML file will generate a xonotic-compatible ``.cfg`` in ``~/.xsms/generate
 Custom Server Configuration
 ---------------------------
 
-Custom server templates are defined in ``~/.xsms/templates/servers/<servername>.cfg.tpl`` where ``<servername>`` corresponds with the name of the server defined in the YAML. See the ``tests`` folder for an example.
+The configuration files for ``xsms`` exist in ``~/.xsms``, below is a tree showing demonstrating the structure::
+
+    ~/.xsms
+    ├── generated
+    │   ├── servers
+    │   │   ├── insta.cfg
+    │   │   ├── overkill.cfg
+    │   │   └── vanilla.cfg
+    │   └── supervisor.conf
+    ├── servers.yml
+    └── templates
+        ├── servers
+        │   └── insta.cfg.tpl
+        ├── supervisor.conf.tpl
+        ├── supervisor.server.conf.tpl
+        └── xonotic
+            ├── xonotic.server.cfg.tpl
+            └── xonotic.smbmod-server.cfg.tpl
+
+The ``generated`` folder is build artifacts that can be deleted and regenerated. These are based on the files in ``templates``.
+
+Custom server templates are defined in ``~/.xsms/templates/servers/<servername>.cfg.tpl`` where ``<servername>`` corresponds with the name of the server defined in the YAML. See the ``tests`` folder for an example of a ``custom.cfg.tpl``.
 
 
 * :ref:`genindex`

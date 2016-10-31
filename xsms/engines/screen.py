@@ -10,15 +10,16 @@ class Session(Engine):
     """
     This is the ``engine`` class for ``screen``
     """
+
     def start(self, xonotic_root, filename=None):
         """
         This engine enables programmatic control of ``screen``
 
-        :param servers: A dictionary of servers as defined in ``servers.yml``
-        :type servers: ``dict``
-
         :param xonotic_root: The directory for the ``exec`` command
-        :type xonotic_root: ``string``
+        :type xonotic_root: ``str``
+
+        :param filename: A file in the ``servers.yml`` format
+        :type filename: ``str``
 
         >>> from xsms.engines.screen import Session as screen
         >>> from xsms.config import conf

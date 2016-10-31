@@ -26,7 +26,6 @@ class Command:
     >>> from xsms.config import conf
     >>> session = Command(conf=conf)
     """
-
     def __init__(self, conf):
         self.conf = conf
 
@@ -117,7 +116,7 @@ class Command:
 
         :param engine:
             A supported engine (``screen``, ``tmux``, ``supervisor``)
-        :type engine: ``string``
+        :type engine: ``str``
 
         Available engines:
 

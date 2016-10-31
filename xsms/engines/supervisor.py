@@ -14,10 +14,10 @@ class Session(Engine):
 
     def start(self, filename=None):
         """
-        This engine enables pass-through control of servers managed by ``supervisor``
+        This engine enables pass-through control of servers managed by ``supervisor``.
 
-        :param servers: A dictionary of servers as defined in ``servers.yml``
-        :type servers: ``dict``
+        :param filename: A file in the ``servers.yml`` format
+        :type filename: ``str``
 
         >>> from xsms.engines.supervisor import Session as supervisor
         >>> from xsms.config import conf

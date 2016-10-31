@@ -20,19 +20,14 @@ class Engine:
 
     def read_servers_manifest(self, filename):
         """
-        This reads in a ``servers.yml`` file, turns it into a dictionary.
+        This reads in a ``servers.yml`` file, turns it into a dict.
         sets ``self.servers`` to that value and then returns it.
 
         :param filename: A yaml file using the syntax of ``servers.yml``
-        :type filename: ``string``
+        :type filename: ``str``
 
         :returns self: ``dict``
-            A dictionary of servers as defined in ``servers.yml``
-
-        .. note::
-            This tries to create a new session with Popen() but it
-            does not always work. It is therefore better to already
-            have a tmux session running before using this command.
+            A dict of servers as defined in ``servers.yml``
 
         >>> from xsms.engine import Engine
         >>> from xsms.config import conf
