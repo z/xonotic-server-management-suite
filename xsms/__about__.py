@@ -14,7 +14,7 @@ __all__ = [
 
 __title__ = 'Xonotic Server Management Suite'
 __package_name__ = 'xsms'
-__version__ = '0.2.0a'
+__version__ = '0.3.0'
 __summary__ = 'Integrated tools for managing Xonotic servers.'
 __keywords__ = ['xonotic', 'xonotic-server', 'cli']
 __author__ = 'Tyler Mulligan'
