@@ -65,6 +65,8 @@ The configuration files for ``xsms`` exist in ``~/.xsms``, below is a tree showi
 
     ~/.xsms
     ├── generated
+    │   ├── engines
+    │   │   └── supervisor.conf
     │   ├── servers
     │   │   ├── insta.cfg
     │   │   ├── overkill.cfg
@@ -72,18 +74,20 @@ The configuration files for ``xsms`` exist in ``~/.xsms``, below is a tree showi
     │   └── supervisor.conf
     ├── servers.yml
     └── templates
+        ├── engines
+        │   ├── supervisor.conf.tpl
+        │   └── supervisor.server.conf.tpl
         ├── servers
         │   └── insta.cfg.tpl
-        ├── supervisor.conf.tpl
-        ├── supervisor.server.conf.tpl
         └── xonotic
             ├── xonotic.server.cfg.tpl
             └── xonotic.smbmod-server.cfg.tpl
 
 The ``generated`` folder is build artifacts that can be deleted and regenerated. These are based on the files in ``templates``.
 
-Custom server templates are defined in ``~/.xsms/templates/servers/<servername>.cfg.tpl`` where ``<servername>`` corresponds with the name of the server defined in the YAML. See the ``tests`` folder for an example of a ``custom.cfg.tpl``.
+Custom server templates are defined in ``~/.xsms/templates/servers/<server_name>.cfg.tpl`` where ``<server_name>`` corresponds with the name of the server defined in the YAML. See the ``tests`` folder for an example of a ``custom.cfg.tpl``.
 
+Custom engine configs likewise belong in  ``~/.xsms/templates/servers/<engine_name>``. Currently only ``supervisord`` has a custom template.
 
 * :ref:`genindex`
 * :ref:`modindex`

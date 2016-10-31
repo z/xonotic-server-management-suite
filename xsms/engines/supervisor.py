@@ -12,12 +12,12 @@ class Session(Engine):
     This is the ``engine`` class for ``supervisor``
     """
 
-    def start(self, filename=None):
+    def start(self, servers_manifest=None):
         """
         This engine enables pass-through control of servers managed by ``supervisor``.
 
-        :param filename: A file in the ``servers.yml`` format
-        :type filename: ``str``
+        :param servers_manifest: A file in the ``servers.yml`` format
+        :type servers_manifest: ``str``
 
         >>> from xsms.engines.supervisor import Session as supervisor
         >>> from xsms.config import conf

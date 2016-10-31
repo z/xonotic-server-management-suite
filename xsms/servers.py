@@ -140,7 +140,7 @@ class Command:
         # using supervisor
         if engine == 'tmux':
             tmux = tmuxSession(conf=self.conf)
-            tmux.start(filename=self.conf['servers_manifest'], xonotic_root=self.conf['xonotic_root'])
+            tmux.start(servers_manifest=self.conf['servers_manifest'], xonotic_root=self.conf['xonotic_root'])
 
         # using supervisor
         if engine == 'supervisor':
