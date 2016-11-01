@@ -1,25 +1,19 @@
 import os
-import xsms.util as util
-from xsms.command import Command
+from xsms.server import Servers
+from xsms.server import Server
 from xsms.config import conf
 
 root_dir = os.path.dirname(os.path.abspath(__file__))
 
 
-def test_generate_engine_configs():
-    session = Command(conf=conf)
-    session.generate_engine_configs()
-    assert os.path.exists(conf['supervisor_conf'])
+def test_server_object():
+    server = Server(name='insta', exec='./all run dedicated +serverconfig vanilla.cfg', title='My server')
+    assert server.name == 'insta'
 
 
-def test_generate_server_configs():
-    session = Command(conf=conf)
-    session.generate_server_configs()
-    assert os.path.exists('{}/insta.cfg'.format(conf['xsms_generated_servers_root']))
-
-
-def test_generate_custom_server_configs():
-    util.check_if_not_create('{}/insta.cfg.tpl'.format(conf['xsms_templates_servers_root']), '{}/data/servers/custom.cfg.tpl'.format(root_dir))
-    session = Command(conf=conf)
-    session.generate_server_configs()
-    assert os.path.exists('{}/insta.cfg'.format(conf['xsms_generated_servers_root']))
+def test_servers_object():
+    server1 = Server(name='vanilla', exec='./all run dedicated +serverconfig vanilla.cfg', title='My server 1')
+    server2 = Server(name='insta', exec='./all run dedicated +serverconfig insta.cfg', title='My server 2')
+    servers = Servers(name='Xonotic Server Collection', servers=[server1, server2])
+    assert servers.servers[0].name == 'vanilla'
+    assert servers.servers[1].title == 'My server 2'
