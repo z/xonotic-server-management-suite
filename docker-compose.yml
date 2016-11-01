@@ -16,13 +16,14 @@ services:
     #command: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
     # Run many servers (in progress)
     # command: xsms servers start
+    #command: xsms servers start -e screen
     # Run under supervisor
     command: /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
     ports:
       - "26000-26010:26000-26010/udp"
     volumes:
-      # ENV config
-      - ~/.xsms/generated/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
+      # Engine config
+      - ~/.xsms/generated/engines/supervisor.conf:/etc/supervisor/conf.d/supervisord.conf
       # Xonotic Server Config
       - ~/.xsms.cfg:/root/.xsms.cfg
       - ~/.xsms/servers.yml:/root/.xsms/servers.yml

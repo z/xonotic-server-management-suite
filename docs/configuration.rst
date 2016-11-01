@@ -1,7 +1,9 @@
 Configuration
 =============
 
-The defaults should work out of the box, if you want to make changes, edit the ``~/.xsms.cfg`` file.::
+The defaults should work out of the box, if you want to make changes, edit the ``~/.xsms.cfg`` file.
+
+.. code-block:: ini
 
     [default]
     # Xonotic
@@ -13,9 +15,9 @@ The defaults should work out of the box, if you want to make changes, edit the `
     xonotic_smbmod_server_template = ~/.xsms/templates/xonotic/xonotic.smbmod-server.cfg.tpl
 
     # Engines
-    supervisor_server_template = ~/.xsms/templates/supervisor.server.conf.tpl
-    supervisor_conf_template = ~/.xsms/templates/supervisor.conf.tpl
-    supervisor_conf = ~/.xsms/generated/supervisor.conf
+    supervisor_server_template = ~/.xsms/templates/engines/supervisor.server.conf.tpl
+    supervisor_conf_template = ~/.xsms/templates/engines/supervisor.conf.tpl
+    supervisor_conf = ~/.xsms/generated/engines/supervisor.conf
 
     # SMB
     smb_init_script = bin/smb_init.sh
@@ -31,7 +33,9 @@ XSMS provides a ``YAML`` specification for defining the basic meta information f
 
 You can think of this as *xonotic-compose*.
 
-**Example:**::
+**Example:**
+
+.. code-block:: yaml
 
     # This file is read from ~/.xsms/servers.yml make sure that's where you are editing it
     version: '1'
