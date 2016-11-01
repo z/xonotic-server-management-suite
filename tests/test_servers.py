@@ -1,6 +1,6 @@
 import os
 import xsms.util as util
-from xsms.servers import Command
+from xsms.command import Command
 from xsms.config import conf
 
 root_dir = os.path.dirname(os.path.abspath(__file__))

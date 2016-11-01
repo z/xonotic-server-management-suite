@@ -1,6 +1,12 @@
 API
 ===
 
+Server
+------
+
+.. automodule:: xsms.server
+    :members:
+
 Engine
 ------
 
@@ -19,10 +25,10 @@ Engines
 .. automodule:: xsms.engines.supervisor
     :members:
 
-Servers
+Command
 -------
 
-.. automodule:: xsms.servers
+.. automodule:: xsms.command
     :members:
 
 * :ref:`genindex`

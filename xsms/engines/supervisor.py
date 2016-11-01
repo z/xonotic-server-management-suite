@@ -29,6 +29,5 @@ class Session(Engine):
             print('Unable to locate /etc/supervisor/conf.d/supervisord.conf')
             raise SystemExit
 
-        for server in self.servers['servers']:
-            print(server)
-            p = subprocess.Popen(['supervisorctl', 'start', server], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        for server in self.servers:
+            p = subprocess.Popen(['supervisorctl', 'start', server.name], stdout=subprocess.PIPE, stderr=subprocess.PIPE)

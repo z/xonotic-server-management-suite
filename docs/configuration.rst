@@ -71,7 +71,6 @@ The configuration files for ``xsms`` exist in ``~/.xsms``, below is a tree showi
     │   │   ├── insta.cfg
     │   │   ├── overkill.cfg
     │   │   └── vanilla.cfg
-    │   └── supervisor.conf
     ├── servers.yml
     └── templates
         ├── engines

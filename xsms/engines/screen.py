@@ -29,9 +29,9 @@ class Session(Engine):
 
         screen_sessions = {}
 
-        for server in self.servers['servers']:
-            screen_sessions[server] = screenutils.Screen(server, True)
+        for server in self.servers:
+            screen_sessions[server] = screenutils.Screen(server.name, True)
             screen_sessions[server].send_commands('cd {0}'.format(xonotic_root))
-            screen_sessions[server].send_commands(self.servers['servers'][server]['exec'])
+            screen_sessions[server].send_commands(server.exec)
 
         screenutils.list_screens()

@@ -1,4 +1,6 @@
 import yaml
+from xsms.server import Server
+from xsms.server import Servers
 """
 Created on Oct 30, 2016
 @author: Tyler Mulligan
@@ -12,6 +14,8 @@ class Engine:
 
     :param conf: A dict ``conf`` from ``config.py``
     :type conf: ``dict``
+
+    :returns: ``Engine``
     """
     def __init__(self, conf):
         self.conf = conf
@@ -26,8 +30,7 @@ class Engine:
         :param filename: A yaml file using the syntax of ``servers.yml``
         :type filename: ``str``
 
-        :returns self: ``dict``
-            A dict of servers as defined in ``servers.yml``
+        :returns: ``Servers``
 
         >>> from xsms.engine import Engine
         >>> from xsms.config import conf
@@ -35,7 +38,23 @@ class Engine:
         >>> servers = session.read_servers_manifest(filename=conf['servers_manifest'])
         """
 
-        with open(filename) as f:
-            self.servers = yaml.load(f)
+        servers = Servers(name='default')
 
-        return self.servers
+        with open(filename) as f:
+            servers_manifest = yaml.load(f)
+
+        for server in servers_manifest['servers']:
+            servers.add_server(Server(
+                name=server,
+                exec=servers_manifest['servers'][server]['exec'],
+                title=servers_manifest['servers'][server]['title'],
+                motd=servers_manifest['servers'][server]['motd'],
+                port=servers_manifest['servers'][server]['port'],
+                maxplayers=servers_manifest['servers'][server]['maxplayers'],
+                net_address=servers_manifest['servers'][server]['net_address'],
+                use_smbmod=servers_manifest['servers'][server]['use_smbmod'],
+            ))
+
+        self.servers = servers.servers
+
+        return servers
