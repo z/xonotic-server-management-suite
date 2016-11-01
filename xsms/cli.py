@@ -4,7 +4,7 @@ import argparse
 import subprocess
 from .config import conf
 from .__about__ import __version__
-from .servers import Command
+from .command import Command
 
 
 def main():
@@ -33,15 +33,15 @@ def main():
 
     if args.command == 'servers':
 
-        servers = Command(conf=conf)
+        command = Command(conf=conf)
 
         if args.subcommand == 'start':
-            servers.start(engine=args.engine)
+            command.start(engine=args.engine)
 
         # supervisor conf needs to be generated if using supervisor
         if args.subcommand == 'build':
-            servers.generate_engine_configs()
-            servers.generate_server_configs()
+            command.generate_engine_configs()
+            command.generate_server_configs()
 
 
 def parse_args():

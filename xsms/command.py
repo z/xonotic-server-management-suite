@@ -17,12 +17,12 @@ class Command:
         The conf dictionary from ``config.py``
     :type conf: ``dict``
 
-    :returns object: ``self``
+    :returns object: ``Command``
         The session for a ``xsms servers`` subcommand
 
     :Example:
 
-    >>> from xsms.servers import Command
+    >>> from xsms.command import Command
     >>> from xsms.config import conf
     >>> session = Command(conf=conf)
     """
@@ -126,7 +126,7 @@ class Command:
 
         :Example:
 
-        >>> from xsms.servers import Command
+        >>> from xsms.command import Command
         >>> from xsms.config import conf
         >>> session = Command(conf=conf)
         >>> session.start(engine='tmux')

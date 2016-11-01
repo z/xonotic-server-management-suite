@@ -37,6 +37,6 @@ class Session(Engine):
         p = subprocess.Popen(['tmux', 'new-session', '-s', 'xsms', '-n', 'main'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         session = server.find_where({"session_name": 'xsms'})
 
-        for server in self.servers['servers']:
-            session.new_window(attach=False, window_name=server, start_directory=xonotic_root,
-                               window_shell=self.servers['servers'][server]['exec'])
+        for server in self.servers:
+            session.new_window(attach=False, window_name=server.name, start_directory=xonotic_root,
+                               window_shell=server.exec)
