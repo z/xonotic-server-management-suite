@@ -46,9 +46,7 @@ The following command will generate the ``vanilla.cfg`` file the ``exec`` line a
 
     xsms servers build
 
-The contents of that generated file will look similar to
-
-.. code-block:: cfg
+The contents of that generated file will look similar to::
 
     // Last Generated: 2016-10-30 19:39:17.026331
     hostname "-z- Simple vanilla"
