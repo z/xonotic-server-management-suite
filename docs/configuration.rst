@@ -33,7 +33,9 @@ XSMS provides a ``YAML`` specification for defining the basic meta information f
 
 You can think of this as *xonotic-compose*.
 
-**Example:**::
+**Example:**
+
+.. code-block:: yaml
 
     # This file is read from ~/.xsms/servers.yml make sure that's where you are editing it
     version: '1'
