@@ -6,7 +6,30 @@
 Welcome to Xonotic Server Management Suite's documentation!
 ===========================================================
 
-For managing infrastructure, tests, deployments of Xonotic game servers.
+Xonotic Server Management Suite is a collection of tools and best practices for
+managing infrastructure, tests, and deployments of Xonotic game servers.
+
+.. code-block:: yaml
+
+    version: '1'
+    servers:
+      vanilla:
+        title: "-z- Simple vanilla"
+        motd: "Welcome to ${hostname} | Owner: -z-"
+        port: 26000
+        maxplayers: 16
+        net_address: ""
+        use_smbmod: false
+        exec: ./all run dedicated +serverconfig vanilla.cfg
+      insta:
+        title: "(SMB) Instagib+Hook USA"
+        motd: "Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin, -z- | Hello from xsms"
+        port: 26010
+        maxplayers: 64
+        net_address: ""
+        use_smbmod: true
+        exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig insta.cfg
+
 
 .. image:: https://travis-ci.org/z/xonotic-server-management-suite.svg?branch=develop
     :target: https://travis-ci.org/z/xonotic-server-management-suite
