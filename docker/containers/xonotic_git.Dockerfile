@@ -59,6 +59,7 @@ RUN git clone https://github.com/z/xonotic-server-management-suite /opt/xsms && 
     cd /opt/xsms/ && \
     python3 setup.py install
 
+# Engines
 RUN systemctl enable supervisor
 RUN touch /var/run/supervisor.sock
 RUN chmod 777 /var/run/supervisor.sock
