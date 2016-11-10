@@ -54,7 +54,7 @@ class Engine:
             )
 
             if 'port' in servers_manifest['servers'][server]:
-                this_server.maxplayers = servers_manifest['servers'][server]['port']
+                this_server.port = servers_manifest['servers'][server]['port']
 
             if 'maxplayers' in servers_manifest['servers'][server]:
                 this_server.maxplayers = servers_manifest['servers'][server]['maxplayers']
