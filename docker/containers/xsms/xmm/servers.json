@@ -1,0 +1,17 @@
+{
+  "insta": {
+    "target_dir": "~/.xonotic/data_insta/",
+    "library": "~/.xmm/insta/library.json",
+    "sources": "~/.xmm/insta/sources.json"
+  },
+  "kansas": {
+    "target_dir": "~/.xonotic/data_kansas/",
+    "library": "~/.xmm/kansas/library.json",
+    "sources": "~/.xmm/kansas/sources.json"
+  },
+  "overkill": {
+    "target_dir": "~/.xonotic/data_overkill/",
+    "library": "~/.xmm/overkill/library.json",
+    "sources": "~/.xmm/overkill/sources.json"
+  }
+}

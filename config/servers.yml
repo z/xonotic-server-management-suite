@@ -8,7 +8,7 @@ servers:
     maxplayers: 16
     net_address: ""
     use_smbmod: false
-    exec: ./all run dedicated +serverconfig vanilla.cfg
+    exec: ./all run dedicated +serverconfig vanilla.cfg -sessionid vanilla
   insta:
     title: "(SMB) Instagib+Hook USA"
     motd: "Welcome to ${hostname} | Owner: AllieWay | Admins: Mario, muffin, -z- | Hello from xsms"
@@ -19,9 +19,7 @@ servers:
     exec: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig insta.cfg
   overkill:
     title: "(SMB) Overkill USA"
-    motd: |
-      This is my long message of the day.
-      On multiple lines
+    motd: This is my message
     port: 26004
     maxplayers: 32
     net_address: ""

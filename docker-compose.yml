@@ -3,14 +3,14 @@ services:
   xonotic_stable:
     build:
       context: docker
-      dockerfile: containers/xonotic_stable.Dockerfile
+      dockerfile: containers/xsms_stable.Dockerfile
     command: ./server_linux.sh -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-overkill.cfg
     ports:
       - "26011-26014:26011-26014/udp"
   xonotic_git:
     build:
       context: docker
-      dockerfile: containers/xonotic_git.Dockerfile
+      dockerfile: containers/xsms_git_all.Dockerfile
     # Run a single server
     #command: ./all run dedicated +serverconfig server.cfg
     #command: ./all run dedicated -game modpack -game data_csprogs -game data_insta -sessionid insta +serverconfig configs/info-usainsta.cfg
